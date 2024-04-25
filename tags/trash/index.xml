@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Trash on a blog with Hugo</title>
+    
+    
+    
+    <link>//localhost:1313/tags/trash/</link>
+    <description>Recent content in Trash on a blog with Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 22 Apr 2024 19:44:21 +0300</lastBuildDate>
+    
+	<atom:link href="//localhost:1313/tags/trash/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Dumpster Dive</title>
+      <link>//localhost:1313/stories/dumpster-dive/</link>
+      <pubDate>Mon, 22 Apr 2024 19:44:21 +0300</pubDate>
+      
+      <guid>//localhost:1313/stories/dumpster-dive/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          When I moved long time ago, most of my stuff where kind of put in boxes without labels.. as a result, especially those not really critical (never keep that stuff, they become expensive in various terms - time, space, sanity) they become forgotten and clutter.
+So far I&amp;rsquo;ve found
+old mobile phones network components (switches, ISDN routers, access points) handheld devices hard disks old desktop computers motherboards cables (serial, parallel, scsi, tons of usb-A) PSUs voip phones, ATAs magazines, books, manuals cdroms, floppy disks, even 8mm tapes (films) pictures, photos, manuals, skus and possibly links to get these will be added later.
+          
+        
+        </description>
+    </item>
+    
+  </channel>
+</rss>
