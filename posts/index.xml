@@ -5,21 +5,21 @@
     
     
     
-    <link>/posts/</link>
+    <link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/</link>
     <description>Recent content in Posts on a blog with Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Tue, 23 Apr 2024 10:39:09 +0300</lastBuildDate>
     
-	<atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://apostoloss.github.io/BitsThoughtsAndMore/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Adding Emoji in Hugo Post :smile:</title>
-      <link>/posts/adding-emoji-in-hugo-post/</link>
+      <link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/adding-emoji-in-hugo-post/</link>
       <pubDate>Tue, 23 Apr 2024 10:39:09 +0300</pubDate>
       
-      <guid>/posts/adding-emoji-in-hugo-post/</guid>
+      <guid>https://apostoloss.github.io/BitsThoughtsAndMore/posts/adding-emoji-in-hugo-post/</guid>
       <description>
         
           
@@ -36,10 +36,10 @@
     
     <item>
       <title>adding a post by adding a file</title>
-      <link>/posts/what-if/</link>
+      <link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/what-if/</link>
       <pubDate>Thu, 18 Apr 2024 12:56:02 +0300</pubDate>
       
-      <guid>/posts/what-if/</guid>
+      <guid>https://apostoloss.github.io/BitsThoughtsAndMore/posts/what-if/</guid>
       <description>
         
           
@@ -57,10 +57,10 @@ Depending on theme you should be able to see this emoji rendered or not.. :smile
     
     <item>
       <title>Blogging with Hugo</title>
-      <link>/posts/blogging_with_hugo/</link>
+      <link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/blogging_with_hugo/</link>
       <pubDate>Thu, 18 Apr 2024 12:56:02 +0300</pubDate>
       
-      <guid>/posts/blogging_with_hugo/</guid>
+      <guid>https://apostoloss.github.io/BitsThoughtsAndMore/posts/blogging_with_hugo/</guid>
       <description>
         
           
