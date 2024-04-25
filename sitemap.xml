@@ -2,42 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>//localhost:1313/</loc>
+    <loc>/</loc>
     <lastmod>2024-04-23T10:39:09+03:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/posts/adding-emoji-in-hugo-post/</loc>
+    <loc>/posts/adding-emoji-in-hugo-post/</loc>
     <lastmod>2024-04-23T10:39:09+03:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/hugo/</loc>
+    <loc>/tags/hugo/</loc>
     <lastmod>2024-04-23T10:39:09+03:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/posts/</loc>
+    <loc>/posts/</loc>
     <lastmod>2024-04-23T10:39:09+03:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/</loc>
+    <loc>/tags/</loc>
     <lastmod>2024-04-23T10:39:09+03:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/stories/dumpster-dive/</loc>
+    <loc>/stories/dumpster-dive/</loc>
     <lastmod>2024-04-22T19:44:21+03:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/equipment/</loc>
+    <loc>/tags/equipment/</loc>
     <lastmod>2024-04-22T19:44:21+03:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/stories/</loc>
+    <loc>/stories/</loc>
     <lastmod>2024-04-22T19:44:21+03:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/trash/</loc>
+    <loc>/tags/trash/</loc>
     <lastmod>2024-04-22T19:44:21+03:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/posts/what-if/</loc>
+    <loc>/posts/what-if/</loc>
     <lastmod>2024-04-18T12:56:02+03:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/blogging/</loc>
+    <loc>/tags/blogging/</loc>
     <lastmod>2024-04-18T12:56:02+03:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/posts/blogging_with_hugo/</loc>
+    <loc>/posts/blogging_with_hugo/</loc>
     <lastmod>2024-04-18T12:56:02+03:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/categories/</loc>
+    <loc>/categories/</loc>
   </url>
 </urlset>
