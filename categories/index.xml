@@ -5,12 +5,12 @@
     
     
     
-    <link>http://localhost:1313/BitsThoughtsAndMore/categories/</link>
+    <link>https://apostoloss.github.io/BitsThoughtsAndMore/categories/</link>
     <description>Recent content in Categories on a blog with Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     
-	<atom:link href="http://localhost:1313/BitsThoughtsAndMore/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://apostoloss.github.io/BitsThoughtsAndMore/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>
