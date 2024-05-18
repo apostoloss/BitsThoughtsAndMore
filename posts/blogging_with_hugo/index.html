@@ -297,6 +297,19 @@ See documentation at https://gohugo.io/.
   configure your theme
   <a href="#configure-your-theme" class="h-anchor" aria-hidden="true">#</a>
 </h2>
+<p><em>todo</em></p>
+<h2 id="publish">
+  publish
+  <a href="#publish" class="h-anchor" aria-hidden="true">#</a>
+</h2>
+<p>normally you&rsquo;ll set up CD so that every new post (merge) on the posts repo will trigger a rendering and a merge on the public blog repo.
+The way to do this manually based on the structure we have is the following.</p>
+<ol>
+<li>create the .md file (post) either manually or with <code>hugo new post/myfile.md</code> and write your content</li>
+<li>get the hugo server running so that it will render the content <code>hugo server</code></li>
+<li>commit the file to the repo (it is not required in order to view your content in the internet but you must do it to keep the content available for re-rendering next time)</li>
+<li>commit the changes that <code>hugo server</code> did on the public repo. Now this is important. navigate to the public directory which is set by the git submodule (just <code>cd</code> to it) and do a <code>git commit .</code> since hugo during rendering has changed several files. As soon as you commit and merge these, github-pages will trigger the deployment and you will have your changes published.</li>
+</ol>
 
     </div>
     

@@ -15,6 +15,28 @@
     
     
     <item>
+      <title>Immich in Docker</title>
+      <link>http://localhost:1313/BitsThoughtsAndMore/posts/immich-in-docker/</link>
+      <pubDate>Fri, 17 May 2024 15:21:29 +0300</pubDate>
+      
+      <guid>http://localhost:1313/BitsThoughtsAndMore/posts/immich-in-docker/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Immich (github) is a media library tool.
+At some point I&amp;rsquo;ve lost my QNAP drives (both at the almost the same time) and wanted to check if I could replace the PhotoStation with an opensource tool.
+Immich was one of the candidates but if has a major drawback for me. I dislike that it renames the files you upload/import/sync with it. Although it allows you to download them and the metadata it keeps (in a database) contain all the info and the result you get is the original filenames, you cannot suddenly stop using it and pick the file structure and use it.
+          
+        
+        </description>
+    </item>
+    
+    <item>
       <title>Adding Emoji in Hugo Post :smile:</title>
       <link>http://localhost:1313/BitsThoughtsAndMore/posts/adding-emoji-in-hugo-post/</link>
       <pubDate>Tue, 23 Apr 2024 10:39:09 +0300</pubDate>
