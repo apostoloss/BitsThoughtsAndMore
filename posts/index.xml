@@ -5,21 +5,43 @@
     
     
     
-    <link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/</link>
+    <link>http://localhost:1313/BitsThoughtsAndMore/posts/</link>
     <description>Recent content in Posts on a blog with Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 23 Apr 2024 10:39:09 +0300</lastBuildDate>
+    <lastBuildDate>Fri, 17 May 2024 15:21:29 +0300</lastBuildDate>
     
-	<atom:link href="https://apostoloss.github.io/BitsThoughtsAndMore/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://localhost:1313/BitsThoughtsAndMore/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Immich in Docker</title>
+      <link>http://localhost:1313/BitsThoughtsAndMore/posts/immich-in-docker/</link>
+      <pubDate>Fri, 17 May 2024 15:21:29 +0300</pubDate>
+      
+      <guid>http://localhost:1313/BitsThoughtsAndMore/posts/immich-in-docker/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Immich (github) is a media library tool.
+At some point I&amp;rsquo;ve lost my QNAP drives (both at the almost the same time) and wanted to check if I could replace the PhotoStation with an opensource tool.
+Immich was one of the candidates but if has a major drawback for me. I dislike that it renames the files you upload/import/sync with it. Although it allows you to download them and the metadata it keeps (in a database) contain all the info and the result you get is the original filenames, you cannot suddenly stop using it and pick the file structure and use it.
+          
+        
+        </description>
+    </item>
+    
+    <item>
       <title>Adding Emoji in Hugo Post :smile:</title>
-      <link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/adding-emoji-in-hugo-post/</link>
+      <link>http://localhost:1313/BitsThoughtsAndMore/posts/adding-emoji-in-hugo-post/</link>
       <pubDate>Tue, 23 Apr 2024 10:39:09 +0300</pubDate>
       
-      <guid>https://apostoloss.github.io/BitsThoughtsAndMore/posts/adding-emoji-in-hugo-post/</guid>
+      <guid>http://localhost:1313/BitsThoughtsAndMore/posts/adding-emoji-in-hugo-post/</guid>
       <description>
         
           
@@ -36,10 +58,10 @@
     
     <item>
       <title>adding a post by adding a file</title>
-      <link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/what-if/</link>
+      <link>http://localhost:1313/BitsThoughtsAndMore/posts/what-if/</link>
       <pubDate>Thu, 18 Apr 2024 12:56:02 +0300</pubDate>
       
-      <guid>https://apostoloss.github.io/BitsThoughtsAndMore/posts/what-if/</guid>
+      <guid>http://localhost:1313/BitsThoughtsAndMore/posts/what-if/</guid>
       <description>
         
           
@@ -57,10 +79,10 @@ Depending on theme you should be able to see this emoji rendered or not.. :smile
     
     <item>
       <title>Blogging with Hugo</title>
-      <link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/blogging_with_hugo/</link>
+      <link>http://localhost:1313/BitsThoughtsAndMore/posts/blogging_with_hugo/</link>
       <pubDate>Thu, 18 Apr 2024 12:56:02 +0300</pubDate>
       
-      <guid>https://apostoloss.github.io/BitsThoughtsAndMore/posts/blogging_with_hugo/</guid>
+      <guid>http://localhost:1313/BitsThoughtsAndMore/posts/blogging_with_hugo/</guid>
       <description>
         
           

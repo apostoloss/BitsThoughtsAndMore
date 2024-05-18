@@ -3,7 +3,7 @@
   <head><script src="/BitsThoughtsAndMore/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=BitsThoughtsAndMore/livereload" data-no-instant defer></script>
     
       <title>
-        Blogging ::
+        Mediacenter ::
         a blog with Hugo — ...lost bits..
       </title>
     
@@ -18,7 +18,7 @@
   content=""
 />
 <meta name="robots" content="noodp" />
-<link rel="canonical" href="http://localhost:1313/BitsThoughtsAndMore/tags/blogging/" />
+<link rel="canonical" href="http://localhost:1313/BitsThoughtsAndMore/tags/mediacenter/" />
 
 
 
@@ -43,20 +43,20 @@
 <link href="/BitsThoughtsAndMore/fonts/Inter-BoldItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
 
 
-<meta name="twitter:card" content="summary"><meta name="twitter:title" content="Blogging">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="Mediacenter">
 <meta name="twitter:description" content="">
 
 
 
-<meta property="og:url" content="http://localhost:1313/BitsThoughtsAndMore/tags/blogging/">
+<meta property="og:url" content="http://localhost:1313/BitsThoughtsAndMore/tags/mediacenter/">
   <meta property="og:site_name" content="a blog with Hugo">
-  <meta property="og:title" content="Blogging">
+  <meta property="og:title" content="Mediacenter">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="website">
 
 
 
-<link rel="alternate" type="application/rss+xml" href="/BitsThoughtsAndMore/tags/blogging/index.xml" title="a blog with Hugo" />
+<link rel="alternate" type="application/rss+xml" href="/BitsThoughtsAndMore/tags/mediacenter/index.xml" title="a blog with Hugo" />
 
 
 
@@ -186,11 +186,11 @@
   <div class="posts">
     
       <article class="post on-list">
-        <h1 class="post-title"><a href="http://localhost:1313/BitsThoughtsAndMore/posts/what-if/">adding a post by adding a file</a></h1>
+        <h1 class="post-title"><a href="http://localhost:1313/BitsThoughtsAndMore/posts/immich-in-docker/">Immich in Docker</a></h1>
         <div class="post-meta">
           
             <time class="post-date">
-              2024-04-18
+              2024-05-17
             </time>
 
             
@@ -209,56 +209,11 @@
         
           <span class="post-tags">
             
-              <a href="http://localhost:1313/BitsThoughtsAndMore/tags/hugo/">#hugo</a>&nbsp;
+              <a href="http://localhost:1313/BitsThoughtsAndMore/tags/mediacenter/">#mediacenter</a>&nbsp;
             
-              <a href="http://localhost:1313/BitsThoughtsAndMore/tags/blogging/">#blogging</a>&nbsp;
+              <a href="http://localhost:1313/BitsThoughtsAndMore/tags/immich/">#immich</a>&nbsp;
             
-          </span>
-        
-
-        
-
-        <div class="post-content">
-          
-            
-          
-        </div>
-        
-          <div>
-            <a class="read-more button" href="/BitsThoughtsAndMore/posts/what-if/"
-              >Read more →</a
-            >
-          </div>
-        
-      </article>
-    
-      <article class="post on-list">
-        <h1 class="post-title"><a href="http://localhost:1313/BitsThoughtsAndMore/posts/blogging_with_hugo/">Blogging with Hugo</a></h1>
-        <div class="post-meta">
-          
-            <time class="post-date">
-              2024-04-18
-            </time>
-
-            
-              
-
-
-
-            
-          
-          
-
-
-          
-        </div>
-
-        
-          <span class="post-tags">
-            
-              <a href="http://localhost:1313/BitsThoughtsAndMore/tags/hugo/">#hugo</a>&nbsp;
-            
-              <a href="http://localhost:1313/BitsThoughtsAndMore/tags/blogging/">#blogging</a>&nbsp;
+              <a href="http://localhost:1313/BitsThoughtsAndMore/tags/docker-compose/">#docker compose</a>&nbsp;
             
           </span>
         
@@ -268,16 +223,15 @@
         <div class="post-content">
           
             
-              Following a guide from Ryan in youtube.. (https://www.youtube.com/watch?v=LIFvgrRxdt4)
-What you need:
-2 repos, one for the code of the site and one to deploy (we are going to use github pages) Those two repos will be joined using git submodule.
-In the code repo do: git submodule add -b main &lt;github pages repo&gt; public Where the -b main is the branch of the repo, abd public is the folder that will be linked within the code repo and will point to that branch of the github pages repo.
+              Immich github is a media library tool.
+At some point I&rsquo;ve lost my QNAP drives (both at the almost the same time) and wanted to check if I could replace the PhotoStation with an opensource tool.
+docker compose # # # WARNING: Make sure to use the docker-compose.yml of the current release: # # https://github.com/immich-app/immich/releases/latest/download/docker-compose.yml # # The compose file on main may not be compatible with the latest release. # name: immich services: immich-server: container_name: immich_server image: ghcr.
             
           
         </div>
         
           <div>
-            <a class="read-more button" href="/BitsThoughtsAndMore/posts/blogging_with_hugo/"
+            <a class="read-more button" href="/BitsThoughtsAndMore/posts/immich-in-docker/"
               >Read more →</a
             >
           </div>

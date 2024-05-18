@@ -5,21 +5,21 @@
     
     
     
-    <link>https://apostoloss.github.io/BitsThoughtsAndMore/</link>
+    <link>http://localhost:1313/BitsThoughtsAndMore/</link>
     <description>Recent content on a blog with Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 23 Apr 2024 10:39:09 +0300</lastBuildDate>
+    <lastBuildDate>Fri, 17 May 2024 15:21:29 +0300</lastBuildDate>
     
-	<atom:link href="https://apostoloss.github.io/BitsThoughtsAndMore/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://localhost:1313/BitsThoughtsAndMore/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Adding Emoji in Hugo Post :smile:</title>
-      <link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/adding-emoji-in-hugo-post/</link>
+      <link>http://localhost:1313/BitsThoughtsAndMore/posts/adding-emoji-in-hugo-post/</link>
       <pubDate>Tue, 23 Apr 2024 10:39:09 +0300</pubDate>
       
-      <guid>https://apostoloss.github.io/BitsThoughtsAndMore/posts/adding-emoji-in-hugo-post/</guid>
+      <guid>http://localhost:1313/BitsThoughtsAndMore/posts/adding-emoji-in-hugo-post/</guid>
       <description>
         
           
@@ -36,10 +36,10 @@
     
     <item>
       <title>Dumpster Dive</title>
-      <link>https://apostoloss.github.io/BitsThoughtsAndMore/stories/dumpster-dive/</link>
+      <link>http://localhost:1313/BitsThoughtsAndMore/stories/dumpster-dive/</link>
       <pubDate>Mon, 22 Apr 2024 19:44:21 +0300</pubDate>
       
-      <guid>https://apostoloss.github.io/BitsThoughtsAndMore/stories/dumpster-dive/</guid>
+      <guid>http://localhost:1313/BitsThoughtsAndMore/stories/dumpster-dive/</guid>
       <description>
         
           
@@ -58,10 +58,10 @@ old mobile phones network components (switches, ISDN routers, access points) han
     
     <item>
       <title>adding a post by adding a file</title>
-      <link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/what-if/</link>
+      <link>http://localhost:1313/BitsThoughtsAndMore/posts/what-if/</link>
       <pubDate>Thu, 18 Apr 2024 12:56:02 +0300</pubDate>
       
-      <guid>https://apostoloss.github.io/BitsThoughtsAndMore/posts/what-if/</guid>
+      <guid>http://localhost:1313/BitsThoughtsAndMore/posts/what-if/</guid>
       <description>
         
           
@@ -79,10 +79,10 @@ Depending on theme you should be able to see this emoji rendered or not.. :smile
     
     <item>
       <title>Blogging with Hugo</title>
-      <link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/blogging_with_hugo/</link>
+      <link>http://localhost:1313/BitsThoughtsAndMore/posts/blogging_with_hugo/</link>
       <pubDate>Thu, 18 Apr 2024 12:56:02 +0300</pubDate>
       
-      <guid>https://apostoloss.github.io/BitsThoughtsAndMore/posts/blogging_with_hugo/</guid>
+      <guid>http://localhost:1313/BitsThoughtsAndMore/posts/blogging_with_hugo/</guid>
       <description>
         
           
