@@ -2,81 +2,32 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hugo on a blog with Hugo</title>
-    
-    
-    
     <link>https://apostoloss.github.io/BitsThoughtsAndMore/tags/hugo/</link>
     <description>Recent content in Hugo on a blog with Hugo</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Tue, 23 Apr 2024 10:39:09 +0300</lastBuildDate>
-    
-	<atom:link href="https://apostoloss.github.io/BitsThoughtsAndMore/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="https://apostoloss.github.io/BitsThoughtsAndMore/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Adding Emoji in Hugo Post :smile:</title>
       <link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/adding-emoji-in-hugo-post/</link>
       <pubDate>Tue, 23 Apr 2024 10:39:09 +0300</pubDate>
-      
       <guid>https://apostoloss.github.io/BitsThoughtsAndMore/posts/adding-emoji-in-hugo-post/</guid>
-      <description>
-        
-          
-          
-          
-        
-        
-        
-          I&amp;rsquo;ve seen a particular Hugo theme called hello-friend which I liked and choose to start with it. However, in a post I thought of adding an emoji (a simple :smile:). But it didn&amp;rsquo;t work, and the reason is that the template did not use a parsing for them. However Hugo supports them, and I only hade to change this in one place in the template to make it work. So in themes/hello-friend/layouts/_default/single.
-          
-        
-        </description>
+      <description>&lt;p&gt;I&amp;rsquo;ve seen a particular Hugo theme called &lt;a href=&#34;https://github.com/panr/hugo-theme-hello-friend&#34;&gt;hello-friend&lt;/a&gt;&#xA;which I liked and choose to start with it.&#xA;However, in a post I thought of adding an emoji (a simple :smile:).&#xA;But it didn&amp;rsquo;t work, and the reason is that the template did not use a parsing for them.&#xA;However Hugo supports them, and I only hade to change this in one place in the template to make it work.&#xA;So in &lt;code&gt;themes/hello-friend/layouts/_default/single.html&lt;/code&gt; change :&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>adding a post by adding a file</title>
       <link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/what-if/</link>
       <pubDate>Thu, 18 Apr 2024 12:56:02 +0300</pubDate>
-      
       <guid>https://apostoloss.github.io/BitsThoughtsAndMore/posts/what-if/</guid>
-      <description>
-        
-          
-          
-          
-        
-        
-        
-          So how about just create a new file in the correct file structure and not use the hugo new post? as it turns out it works exactly as expected&amp;hellip; So hugo just needs this footer.. and that is all!
-Depending on theme you should be able to see this emoji rendered or not.. :smile:
-          
-        
-        </description>
+      <description>&lt;p&gt;So how about just create a new file in the correct file structure and not use the &lt;code&gt;hugo new post&lt;/code&gt;?&#xA;as it turns out it works exactly as expected&amp;hellip;&#xA;So &lt;code&gt;hugo&lt;/code&gt; just needs this footer.. and that is all!&lt;/p&gt;&#xA;&lt;p&gt;Depending on theme you should be able to see this emoji rendered or not.. :smile:&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Blogging with Hugo</title>
       <link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/blogging_with_hugo/</link>
       <pubDate>Thu, 18 Apr 2024 12:56:02 +0300</pubDate>
-      
       <guid>https://apostoloss.github.io/BitsThoughtsAndMore/posts/blogging_with_hugo/</guid>
-      <description>
-        
-          
-          
-          
-        
-        
-        
-          Following a guide from Ryan in youtube.. (https://www.youtube.com/watch?v=LIFvgrRxdt4)
-What you need:
-2 repos, one for the code of the site and one to deploy (we are going to use github pages) Those two repos will be joined using git submodule.
-In the code repo do: git submodule add -b main &amp;lt;github pages repo&amp;gt; public Where the -b main is the branch of the repo, abd public is the folder that will be linked within the code repo and will point to that branch of the github pages repo.
-          
-        
-        </description>
+      <description>&lt;p&gt;Following a guide from Ryan in youtube.. (&lt;a href=&#34;https://www.youtube.com/watch?v=LIFvgrRxdt4&#34;&gt;https://www.youtube.com/watch?v=LIFvgrRxdt4&lt;/a&gt;)&lt;/p&gt;&#xA;&lt;p&gt;What you need:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;2 repos, one for the code of the site and one to deploy (we are going to use github pages)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Those two repos will be &lt;code&gt;joined&lt;/code&gt; using git submodule.&lt;/p&gt;&#xA;&lt;p&gt;In the code repo do:&#xA;&lt;code&gt;git submodule add -b main &amp;lt;github pages repo&amp;gt; public&lt;/code&gt;&#xA;Where the &lt;code&gt;-b main&lt;/code&gt; is the branch of the repo, abd &lt;code&gt;public&lt;/code&gt; is the folder that will be linked within the code repo and will point to that branch of the github pages repo.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

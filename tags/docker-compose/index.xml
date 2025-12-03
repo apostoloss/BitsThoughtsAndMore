@@ -2,39 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Docker Compose on a blog with Hugo</title>
-    
-    
-    
     <link>https://apostoloss.github.io/BitsThoughtsAndMore/tags/docker-compose/</link>
     <description>Recent content in Docker Compose on a blog with Hugo</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Fri, 17 May 2024 15:21:29 +0300</lastBuildDate>
-    
-	<atom:link href="https://apostoloss.github.io/BitsThoughtsAndMore/tags/docker-compose/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="https://apostoloss.github.io/BitsThoughtsAndMore/tags/docker-compose/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Immich in Docker</title>
       <link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/immich-in-docker/</link>
       <pubDate>Fri, 17 May 2024 15:21:29 +0300</pubDate>
-      
       <guid>https://apostoloss.github.io/BitsThoughtsAndMore/posts/immich-in-docker/</guid>
-      <description>
-        
-          
-          
-          
-        
-        
-        
-          Immich (github) is a media library tool.
-At some point I&amp;rsquo;ve lost my QNAP drives (both at the almost the same time) and wanted to check if I could replace the PhotoStation with an opensource tool.
-Immich was one of the candidates but if has a major drawback for me. I dislike that it renames the files you upload/import/sync with it. Although it allows you to download them and the metadata it keeps (in a database) contain all the info and the result you get is the original filenames, you cannot suddenly stop using it and pick the file structure and use it.
-          
-        
-        </description>
+      <description>&lt;p&gt;&lt;a href=&#34;https://immich.app/&#34;&gt;Immich&lt;/a&gt; &lt;a href=&#34;https://github.com/immich-app/immich&#34;&gt;(github)&lt;/a&gt; is a media library tool.&lt;/p&gt;&#xA;&lt;p&gt;At some point I&amp;rsquo;ve lost my QNAP drives (both at the almost the same time) and wanted to check if I could replace the &lt;em&gt;PhotoStation&lt;/em&gt; with an opensource tool.&lt;/p&gt;&#xA;&lt;p&gt;Immich was one of the candidates but if has a major drawback for me. I dislike that it renames the files you upload/import/sync with it. Although it allows you to download them and the metadata it keeps (in a database) contain all the info and the result you get is the original filenames, you cannot suddenly stop using it and pick the file structure and use it.&#xA;If you lose the database you have to manually rename and organize all files which can be practically impossible if you have several thousand images or videos in your library.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>
