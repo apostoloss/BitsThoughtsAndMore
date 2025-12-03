@@ -1,244 +1,105 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-    <channel>
-        <title>Posts on a blog with Hugo</title>
-        <link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/</link>
-        <description>Recent content in Posts on a blog with Hugo</description>
-        <generator>Hugo -- gohugo.io</generator>
-        <language>en</language>
-        <lastBuildDate>Fri, 17 May 2024 15:21:29 +0300</lastBuildDate>
-        <atom:link href="https://apostoloss.github.io/BitsThoughtsAndMore/posts/index.xml" rel="self" type="application/rss+xml" />
+  <channel>
+    <title>Posts on a blog with Hugo</title>
+    
+    
+    
+    <link>http://localhost:1313/posts/</link>
+    <description>Recent content in Posts on a blog with Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 17 May 2024 15:21:29 +0300</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Immich in Docker</title>
+      <link>http://localhost:1313/posts/immich-in-docker/</link>
+      <pubDate>Fri, 17 May 2024 15:21:29 +0300</pubDate>
+      
+      <guid>http://localhost:1313/posts/immich-in-docker/</guid>
+      <description>
         
-        <item>
-            <title>Immich in Docker</title>
-            <link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/immich-in-docker/</link>
-            <pubDate>Fri, 17 May 2024 15:21:29 +0300</pubDate>
-            
-            <guid>https://apostoloss.github.io/BitsThoughtsAndMore/posts/immich-in-docker/</guid>
-            <description>&lt;p&gt;&lt;a href=&#34;https://immich.app/&#34;&gt;Immich&lt;/a&gt; &lt;a href=&#34;https://github.com/immich-app/immich&#34;&gt;(github)&lt;/a&gt; is a media library tool.&lt;/p&gt;
+          
+          
+          
+        
+        
+        
+          &lt;p&gt;&lt;a href=&#34;https://immich.app/&#34;&gt;Immich&lt;/a&gt; &lt;a href=&#34;https://github.com/immich-app/immich&#34;&gt;(github)&lt;/a&gt; is a media library tool.&lt;/p&gt;
 &lt;p&gt;At some point I&amp;rsquo;ve lost my QNAP drives (both at the almost the same time) and wanted to check if I could replace the &lt;em&gt;PhotoStation&lt;/em&gt; with an opensource tool.&lt;/p&gt;
 &lt;p&gt;Immich was one of the candidates but if has a major drawback for me. I dislike that it renames the files you upload/import/sync with it. Although it allows you to download them and the metadata it keeps (in a database) contain all the info and the result you get is the original filenames, you cannot suddenly stop using it and pick the file structure and use it.
-If you lose the database you have to manually rename and organize all files which can be practically impossible if you have several thousand images or videos in your library.&lt;/p&gt;</description>
-            <content type="html"><![CDATA[<p><a href="https://immich.app/">Immich</a> <a href="https://github.com/immich-app/immich">(github)</a> is a media library tool.</p>
-<p>At some point I&rsquo;ve lost my QNAP drives (both at the almost the same time) and wanted to check if I could replace the <em>PhotoStation</em> with an opensource tool.</p>
-<p>Immich was one of the candidates but if has a major drawback for me. I dislike that it renames the files you upload/import/sync with it. Although it allows you to download them and the metadata it keeps (in a database) contain all the info and the result you get is the original filenames, you cannot suddenly stop using it and pick the file structure and use it.
-If you lose the database you have to manually rename and organize all files which can be practically impossible if you have several thousand images or videos in your library.</p>
-<p>Still I wanted to try it so lets get into this.</p>
-<ul>
-<li>First of all you need to decide where to store its configuration files and docker compose yaml.</li>
-</ul>
-<h2 id="setup-location">setup location</h2>
-<p><code>mkdir ~/immich</code></p>
-<ul>
-<li>configure the variables that immich need to start (read examples and config notes in immich site)</li>
-</ul>
-<h2 id="configure">configure</h2>
-<p>Set your variable in a <code>.env</code> file like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># You can find documentation for all the supported env variables at https://immich.app/docs/install/environment-variables</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># The location where your uploaded files are stored</span>
-</span></span><span style="display:flex;"><span>UPLOAD_LOCATION<span style="color:#f92672">=</span>./library
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># The location of an external library</span>
-</span></span><span style="display:flex;"><span>EXTERNAL_PATH<span style="color:#f92672">=</span>/home/me/immich/workdir
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># The Immich version to use. You can pin this to a specific version like &#34;v1.71.0&#34;</span>
-</span></span><span style="display:flex;"><span>IMMICH_VERSION<span style="color:#f92672">=</span>release
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Connection secret for postgres. You should change it to a random password</span>
-</span></span><span style="display:flex;"><span>DB_PASSWORD<span style="color:#f92672">=</span>sample-password
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>TYPESENSE_API_KEY<span style="color:#f92672">=</span>the_typeSense_key
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># The values below this line do not need to be changed</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">###################################################################################</span>
-</span></span><span style="display:flex;"><span>DB_HOSTNAME<span style="color:#f92672">=</span>immich_postgres
-</span></span><span style="display:flex;"><span>DB_USERNAME<span style="color:#f92672">=</span>postgres
-</span></span><span style="display:flex;"><span>DB_DATABASE_NAME<span style="color:#f92672">=</span>immich
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>REDIS_HOSTNAME<span style="color:#f92672">=</span>immich_redis
-</span></span></code></pre></div><ul>
-<li>finaly the docker compose file (which is slightly updated since I&rsquo;m currently playing with traefik)</li>
-</ul>
-<h2 id="docker-compose">docker compose</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e">#</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># WARNING: Make sure to use the docker-compose.yml of the current release:</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">#</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># https://github.com/immich-app/immich/releases/latest/download/docker-compose.yml</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">#</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># The compose file on main may not be compatible with the latest release.</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">#</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">immich</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">services</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">immich-server</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">container_name</span>: <span style="color:#ae81ff">immich_server</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">ghcr.io/immich-app/immich-server:${IMMICH_VERSION:-release}</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">command</span>: [<span style="color:#e6db74">&#39;start.sh&#39;</span>, <span style="color:#e6db74">&#39;immich&#39;</span>]
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">labels</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;traefik.enable=true&#34;</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;traefik.http.routers.immich-server.rule=PathPrefix(`/immich`) || Host(`immich.docker.localhost`))&#34;</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;traefik.http.routers.immich-server.tls=true&#34;</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;traefik.docker.network=traefik_default&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">${UPLOAD_LOCATION}:/usr/src/app/upload</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">/etc/localtime:/etc/localtime:ro</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">${EXTERNAL_PATH}:/usr/src/app/external        </span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">env_file</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">.env</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">2283</span>:<span style="color:#ae81ff">3001</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">depends_on</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">redis</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">database</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">networks</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">default</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">traefik_default</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">immich-microservices</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">container_name</span>: <span style="color:#ae81ff">immich_microservices</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">ghcr.io/immich-app/immich-server:${IMMICH_VERSION:-release}</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># extends: # uncomment this section for hardware acceleration - see https://immich.app/docs/features/hardware-transcoding</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#   file: hwaccel.transcoding.yml</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#   service: cpu # set to one of [nvenc, quicksync, rkmpp, vaapi, vaapi-wsl] for accelerated transcoding</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">command</span>: [<span style="color:#e6db74">&#39;start.sh&#39;</span>, <span style="color:#e6db74">&#39;microservices&#39;</span>]
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">${UPLOAD_LOCATION}:/usr/src/app/upload</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">/etc/localtime:/etc/localtime:ro</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">${EXTERNAL_PATH}:/usr/src/app/external</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">env_file</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">.env</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">depends_on</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">redis</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">database</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">immich-machine-learning</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">container_name</span>: <span style="color:#ae81ff">immich_machine_learning</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># For hardware acceleration, add one of -[armnn, cuda, openvino] to the image tag.</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Example tag: ${IMMICH_VERSION:-release}-cuda</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">ghcr.io/immich-app/immich-machine-learning:${IMMICH_VERSION:-release}</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># extends: # uncomment this section for hardware acceleration - see https://immich.app/docs/features/ml-hardware-acceleration</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#   file: hwaccel.ml.yml</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#   service: cpu # set to one of [armnn, cuda, openvino, openvino-wsl] for accelerated inference - use the `-wsl` version for WSL2 where applicable</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">model-cache:/cache</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">env_file</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">.env</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">redis</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">container_name</span>: <span style="color:#ae81ff">immich_redis</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">registry.hub.docker.com/library/redis:6.2-alpine@sha256:51d6c56749a4243096327e3fb964a48ed92254357108449cb6e23999c37773c5</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">database</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">container_name</span>: <span style="color:#ae81ff">immich_postgres</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">registry.hub.docker.com/tensorchord/pgvecto-rs:pg14-v0.2.0@sha256:90724186f0a3517cf6914295b5ab410db9ce23190a2d9d0b9dd6463e3fa298f0</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">POSTGRES_PASSWORD</span>: <span style="color:#ae81ff">${DB_PASSWORD}</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">POSTGRES_USER</span>: <span style="color:#ae81ff">${DB_USERNAME}</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">POSTGRES_DB</span>: <span style="color:#ae81ff">${DB_DATABASE_NAME}</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">pgdata:/var/lib/postgresql/data</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">volumes</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">pgdata</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">model-cache</span>:
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">networks</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">traefik_default</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">external</span>: <span style="color:#66d9ef">true</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">traefik_default</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">default</span>:
-</span></span></code></pre></div><p>Of course this means this particular <code>docker compose</code> depends on an existing running <code>traefik</code>
-Also it is important to check the related host line and adapt accordingly (like adding extra <code>Host</code> domain)</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>    - <span style="color:#e6db74">&#34;traefik.http.routers.immich-server.rule=PathPrefix(`/immich`) || Host(`immich.docker.localhost`))&#34;</span>
-</span></span></code></pre></div><h1 id="upgrading-it">upgrading it</h1>
-<p>And so you have it running, but <code>immich</code> is under heavy development as noted in the site and as a result it keeps changing quite often.
-it is really important that you check the release notes for braking changes and incompatibilities with the mobile app you might have, before you initiate the simple upgrade process below.</p>
-<ol>
-<li>Get in the immich directory where the docker compose file is stored and do a <code>docker compose pull</code></li>
-<li>when everything is pulled do a <code>docker compose up --force-recreate --build -d</code> will restart it to the latest version</li>
-</ol>
-<p><strong>important note</strong> : If you don&rsquo;t change the docker compose file, you will only be pulling the immich updates, since the rest of the services (redis, postgresql) have their version pinned.</p>
-]]></content>
-        </item>
+If you lose the database you have to manually rename and organize all files which can be practically impossible if you have several thousand images or videos in your library.&lt;/p&gt;
+          
         
-        <item>
-            <title>Adding Emoji in Hugo Post :smile:</title>
-            <link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/adding-emoji-in-hugo-post/</link>
-            <pubDate>Tue, 23 Apr 2024 10:39:09 +0300</pubDate>
-            
-            <guid>https://apostoloss.github.io/BitsThoughtsAndMore/posts/adding-emoji-in-hugo-post/</guid>
-            <description>&lt;p&gt;I&amp;rsquo;ve seen a particular Hugo theme called &lt;a href=&#34;https://github.com/panr/hugo-theme-hello-friend&#34;&gt;hello-friend&lt;/a&gt;
+        </description>
+    </item>
+    
+    <item>
+      <title>Adding Emoji in Hugo Post :smile:</title>
+      <link>http://localhost:1313/posts/adding-emoji-in-hugo-post/</link>
+      <pubDate>Tue, 23 Apr 2024 10:39:09 +0300</pubDate>
+      
+      <guid>http://localhost:1313/posts/adding-emoji-in-hugo-post/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          &lt;p&gt;I&amp;rsquo;ve seen a particular Hugo theme called &lt;a href=&#34;https://github.com/panr/hugo-theme-hello-friend&#34;&gt;hello-friend&lt;/a&gt;
 which I liked and choose to start with it.
 However, in a post I thought of adding an emoji (a simple :smile:).
 But it didn&amp;rsquo;t work, and the reason is that the template did not use a parsing for them.
 However Hugo supports them, and I only hade to change this in one place in the template to make it work.
-So in &lt;code&gt;themes/hello-friend/layouts/_default/single.html&lt;/code&gt; change :&lt;/p&gt;</description>
-            <content type="html"><![CDATA[<p>I&rsquo;ve seen a particular Hugo theme called <a href="https://github.com/panr/hugo-theme-hello-friend">hello-friend</a>
-which I liked and choose to start with it.
-However, in a post I thought of adding an emoji (a simple :smile:).
-But it didn&rsquo;t work, and the reason is that the template did not use a parsing for them.
-However Hugo supports them, and I only hade to change this in one place in the template to make it work.
-So in <code>themes/hello-friend/layouts/_default/single.html</code> change :</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>    &lt;<span style="color:#f92672">h1</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;post-title&#34;</span>&gt;{{ .Title | markdownify }}&lt;/<span style="color:#f92672">h1</span>&gt;
-</span></span></code></pre></div><p>to</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>    &lt;<span style="color:#f92672">h1</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;post-title&#34;</span>&gt;{{ .Title | markdownify | emojify }}&lt;/<span style="color:#f92672">h1</span>&gt;
-</span></span></code></pre></div><p>and that will show the emoji in the title when you have the particular post selected.</p>
-<p>To do the same for the content of the post you need to change the following similarly:
-from</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>      {{ .Content }}
-</span></span></code></pre></div><p>to</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>      {{ .Content | emojify }}
-</span></span></code></pre></div><p>However you will notice that when you list your posts the emoji is not there&hellip; the reason is that you need to change another template file which takes care of listing posts in one page.
-Find the file <code>list.html</code> in the same directory as previously, and find the <code>post-content</code> class.</p>
-<p>then add the <code>| emojify </code> where you need this to happen.</p>
-<p>for title,</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>        &lt;<span style="color:#f92672">h1</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;post-title&#34;</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ .Permalink }}&#34;</span>&gt;{{ .Title | markdownify | emojify }}&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">h1</span>&gt;
-</span></span></code></pre></div><p>and content,</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;post-content&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>          {{ with .Description }}
-</span></span><span style="display:flex;"><span>            {{ . | markdownify | emojify }}
-</span></span><span style="display:flex;"><span>            {{ else }}
-</span></span><span style="display:flex;"><span>            {{ if .Truncated }}
-</span></span><span style="display:flex;"><span>              {{ .Summary | emojify }}
-</span></span><span style="display:flex;"><span>            {{ end }}
-</span></span><span style="display:flex;"><span>          {{ end }}
-</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">div</span>&gt;
-</span></span></code></pre></div><p>For everything to work of course, <code>enableEmoji = true</code> needs to be added in <code>config.toml</code> (or <code>hugo.toml</code>)</p>
-]]></content>
-        </item>
+So in &lt;code&gt;themes/hello-friend/layouts/_default/single.html&lt;/code&gt; change :&lt;/p&gt;
+          
         
-        <item>
-            <title>adding a post by adding a file</title>
-            <link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/what-if/</link>
-            <pubDate>Thu, 18 Apr 2024 12:56:02 +0300</pubDate>
-            
-            <guid>https://apostoloss.github.io/BitsThoughtsAndMore/posts/what-if/</guid>
-            <description>&lt;p&gt;So how about just create a new file in the correct file structure and not use the &lt;code&gt;hugo new post&lt;/code&gt;?
+        </description>
+    </item>
+    
+    <item>
+      <title>adding a post by adding a file</title>
+      <link>http://localhost:1313/posts/what-if/</link>
+      <pubDate>Thu, 18 Apr 2024 12:56:02 +0300</pubDate>
+      
+      <guid>http://localhost:1313/posts/what-if/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          &lt;p&gt;So how about just create a new file in the correct file structure and not use the &lt;code&gt;hugo new post&lt;/code&gt;?
 as it turns out it works exactly as expected&amp;hellip;
 So &lt;code&gt;hugo&lt;/code&gt; just needs this footer.. and that is all!&lt;/p&gt;
-&lt;p&gt;Depending on theme you should be able to see this emoji rendered or not.. :smile:&lt;/p&gt;</description>
-            <content type="html"><![CDATA[<p>So how about just create a new file in the correct file structure and not use the <code>hugo new post</code>?
-as it turns out it works exactly as expected&hellip;
-So <code>hugo</code> just needs this footer.. and that is all!</p>
-<p>Depending on theme you should be able to see this emoji rendered or not.. :smile:</p>
-]]></content>
-        </item>
+&lt;p&gt;Depending on theme you should be able to see this emoji rendered or not.. :smile:&lt;/p&gt;
+          
         
-        <item>
-            <title>Blogging with Hugo</title>
-            <link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/blogging_with_hugo/</link>
-            <pubDate>Thu, 18 Apr 2024 12:56:02 +0300</pubDate>
-            
-            <guid>https://apostoloss.github.io/BitsThoughtsAndMore/posts/blogging_with_hugo/</guid>
-            <description>&lt;p&gt;Following a guide from Ryan in youtube.. (&lt;a href=&#34;https://www.youtube.com/watch?v=LIFvgrRxdt4&#34;&gt;https://www.youtube.com/watch?v=LIFvgrRxdt4&lt;/a&gt;)&lt;/p&gt;
+        </description>
+    </item>
+    
+    <item>
+      <title>Blogging with Hugo</title>
+      <link>http://localhost:1313/posts/blogging_with_hugo/</link>
+      <pubDate>Thu, 18 Apr 2024 12:56:02 +0300</pubDate>
+      
+      <guid>http://localhost:1313/posts/blogging_with_hugo/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          &lt;p&gt;Following a guide from Ryan in youtube.. (&lt;a href=&#34;https://www.youtube.com/watch?v=LIFvgrRxdt4&#34;&gt;https://www.youtube.com/watch?v=LIFvgrRxdt4&lt;/a&gt;)&lt;/p&gt;
 &lt;p&gt;What you need:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;2 repos, one for the code of the site and one to deploy (we are going to use github pages)&lt;/li&gt;
@@ -246,72 +107,30 @@ So <code>hugo</code> just needs this footer.. and that is all!</p>
 &lt;p&gt;Those two repos will be &lt;code&gt;joined&lt;/code&gt; using git submodule.&lt;/p&gt;
 &lt;p&gt;In the code repo do:
 &lt;code&gt;git submodule add -b main &amp;lt;github pages repo&amp;gt; public&lt;/code&gt;
-Where the &lt;code&gt;-b main&lt;/code&gt; is the branch of the repo, abd &lt;code&gt;public&lt;/code&gt; is the folder that will be linked within the code repo and will point to that branch of the github pages repo.&lt;/p&gt;</description>
-            <content type="html"><![CDATA[<p>Following a guide from Ryan in youtube.. (<a href="https://www.youtube.com/watch?v=LIFvgrRxdt4">https://www.youtube.com/watch?v=LIFvgrRxdt4</a>)</p>
-<p>What you need:</p>
-<ul>
-<li>2 repos, one for the code of the site and one to deploy (we are going to use github pages)</li>
-</ul>
-<p>Those two repos will be <code>joined</code> using git submodule.</p>
-<p>In the code repo do:
-<code>git submodule add -b main &lt;github pages repo&gt; public</code>
-Where the <code>-b main</code> is the branch of the repo, abd <code>public</code> is the folder that will be linked within the code repo and will point to that branch of the github pages repo.</p>
-<p>Note: Depending on if you already tested locally, <code>public</code> might be already available here&hellip; in this case the submodule command will not work and you need to remove the directory before you execute that command again.</p>
-<h2 id="create-a-blog-post">Create a blog post</h2>
-<p>In order to create a new blog post with hugo you simple write:
-<code>hugo new blog_post.md</code>
-which in turn will create a file and respond to you with its location, and will have the following content already in that file:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>+++
-</span></span><span style="display:flex;"><span>title = &#39;Blogging with Hugo&#39;
-</span></span><span style="display:flex;"><span>date = 2024-04-18T12:56:02+03:00
-</span></span><span style="display:flex;"><span>draft = true
-</span></span><span style="display:flex;"><span>+++
-</span></span></code></pre></div><h2 id="hugo-create-site">hugo create site</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>hugo new site RandomStuff  
-</span></span></code></pre></div><pre tabindex="0"><code class="language-output" data-lang="output">Congratulations! Your new Hugo site was created in /Users/apostoloss/code/mine/myblog/RandomStuff.
-
-Just a few more steps...
-
-1. Change the current directory to /Users/me/code/mine/myblog/RandomStuff.
-2. Create or install a theme:
-   - Create a new theme with the command &#34;hugo new theme &lt;THEMENAME&gt;&#34;
-   - Install a theme from https://themes.gohugo.io/
-3. Edit hugo.toml, setting the &#34;theme&#34; property to the theme name.
-4. Create new content with the command &#34;hugo new content &lt;SECTIONNAME&gt;/&lt;FILENAME&gt;.&lt;FORMAT&gt;&#34;.
-5. Start the embedded web server with the command &#34;hugo server --buildDrafts&#34;.
-
-See documentation at https://gohugo.io/.
-</code></pre><h2 id="get-a-theme">get a theme</h2>
-<p>I&rsquo;m choosing <code>https://github.com/panr/hugo-theme-hello-friend</code> (saw it from a slack user in a group and liked it)</p>
-<p>use from the main directory of the repo
-<code>git submodule add -f https://github.com/panr/hugo-theme-hello-friend.git themes/hello-friend</code></p>
-<p><code>git submodule add -f https://github.com/me/BitsThoughtsAndMore.git RandomStuff/public</code></p>
-<h2 id="running-on-tailscale-enabled-server">running on tailscale enabled server</h2>
-<p>Lets assume you have a tailnet or tailscale in general and you want to run hugo server and blog using a remote machine.</p>
-<p>Get your tailscale IP, then run the hugo server with the <code>--bind</code>:
-<code>hugo server ---bind=&lt;tailscale IP&gt;</code></p>
-<h2 id="configure-your-theme">configure your theme</h2>
-<p><em>todo (theme dependent)</em></p>
-<h2 id="publish">Publish</h2>
-<p>You can read all about it <a href="https://gohugo.io/getting-started/quick-start/">here</a></p>
-<p>Normally you&rsquo;ll set up CD so that every new post (merge) on the posts repo will trigger a rendering and a merge on the public blog repo.
-The way to do this manually based on the structure we have is the following.</p>
-<ol>
-<li>create the .md file (post) either manually or with <code>hugo new post/myfile.md</code> and write your content</li>
-<li>get the hugo server running so that it will render the content. Note that <code>hugo server</code> adn <code>hugo</code> are different. The later will render for publication the first is for development</li>
-<li>commit the file to the repo (it is not required in order to view your content in the internet but you must do it to keep the content available for re-rendering next time)</li>
-<li>commit the changes that <code>hugo</code> did on the public repo. Now this is important. navigate to the public directory which is set by the git submodule (just <code>cd</code> to it) and do a <code>git commit .</code> since hugo during rendering has changed several files. As soon as you commit and merge these, github-pages will trigger the deployment and you will have your changes published.</li>
-</ol>
-]]></content>
-        </item>
+Where the &lt;code&gt;-b main&lt;/code&gt; is the branch of the repo, abd &lt;code&gt;public&lt;/code&gt; is the folder that will be linked within the code repo and will point to that branch of the github pages repo.&lt;/p&gt;
+          
         
-        <item>
-            <title>Partition From Xen Instance</title>
-            <link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/disk-image-lvm-mount/</link>
-            <pubDate>Mon, 01 Apr 2019 16:58:19 +0300</pubDate>
-            
-            <guid>https://apostoloss.github.io/BitsThoughtsAndMore/posts/disk-image-lvm-mount/</guid>
-            <description>&lt;h1 id=&#34;how-to-mount-partition-from-xen-instance&#34;&gt;How to mount partition from xen instance&lt;/h1&gt;
+        </description>
+    </item>
+    
+    <item>
+      <title>Partition From Xen Instance</title>
+      <link>http://localhost:1313/posts/disk-image-lvm-mount/</link>
+      <pubDate>Mon, 01 Apr 2019 16:58:19 +0300</pubDate>
+      
+      <guid>http://localhost:1313/posts/disk-image-lvm-mount/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          &lt;h1 id=&#34;how-to-mount-partition-from-xen-instance&#34;&gt;
+  How to mount partition from xen instance
+  &lt;a href=&#34;#how-to-mount-partition-from-xen-instance&#34; class=&#34;h-anchor&#34; aria-hidden=&#34;true&#34;&gt;#&lt;/a&gt;
+&lt;/h1&gt;
 &lt;p&gt;This below describes the way to mount an LVM partition that exists within a
 partition from a multi-partition disk image.&lt;/p&gt;
 &lt;p&gt;Let assume our image is called System.img&lt;/p&gt;
@@ -323,82 +142,11 @@ let say this is loop6.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;losetup /dev/loop6 ./System.img
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;This will mount the disk image in the loop device.&lt;/p&gt;</description>
-            <content type="html"><![CDATA[<h1 id="how-to-mount-partition-from-xen-instance">How to mount partition from xen instance</h1>
-<p>This below describes the way to mount an LVM partition that exists within a
-partition from a multi-partition disk image.</p>
-<p>Let assume our image is called System.img</p>
-<p>We will need losetup, kpartx and vgscan,vgchange commands.</p>
-<p>With losetup -f you will identify free loopback devices.
-let say this is loop6.</p>
-<ol>
-<li>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>losetup /dev/loop6 ./System.img
-</span></span></code></pre></div></li>
-</ol>
-<p>This will mount the disk image in the loop device.</p>
-<p>You can see partition info with</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>fdisk -l /dev/loop6
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Disk /dev/loop6: 82.6 GB, <span style="color:#ae81ff">82678120448</span> bytes
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">255</span> heads, <span style="color:#ae81ff">63</span> sectors/track, <span style="color:#ae81ff">10051</span> cylinders
-</span></span><span style="display:flex;"><span>Units <span style="color:#f92672">=</span> cylinders of <span style="color:#ae81ff">16065</span> * 512 <span style="color:#f92672">=</span> <span style="color:#ae81ff">8225280</span> bytes
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>      Device Boot      Start         End      Blocks   Id  System
-</span></span><span style="display:flex;"><span>/dev/loop6p1   *           <span style="color:#ae81ff">1</span>          <span style="color:#ae81ff">66</span>      <span style="color:#ae81ff">524288</span>   <span style="color:#ae81ff">83</span>  Linux
-</span></span><span style="display:flex;"><span>Partition <span style="color:#ae81ff">1</span> does not end on cylinder boundary.
-</span></span><span style="display:flex;"><span>/dev/loop6p2              <span style="color:#ae81ff">66</span>       <span style="color:#ae81ff">10051</span>    80209345+  8e  Linux LVM
-</span></span></code></pre></div><p>You could possibly remove the loopback mount and remount only the partition you
-want from the total disk by using the offset &lsquo;&rsquo;&rsquo;-o&rsquo;&rsquo;&rsquo; option.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>losetup -d /dev/loop6
-</span></span></code></pre></div><p>offset is the start cylinder multiplied by the size of each, here 512, so
-(start of p2) 66* (512 bytes) 512 = offset is 33792</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>losetup /dev/loop6 System.img -o <span style="color:#ae81ff">33792</span>
-</span></span></code></pre></div><p>However, we will not use that option.</p>
-<p>Instead:</p>
-<ol start="2">
-<li>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> kpartx -a /dev/loop6
-</span></span></code></pre></div></li>
-</ol>
-<p>which will create the /dev/mapper/loopXpY devices for all partitions of image</p>
-<ol start="3">
-<li>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>vgscan
-</span></span></code></pre></div></li>
-</ol>
-<p>this will show the volume groups that exists in all the devices
-(so eventually search those created above).
-In our example it returned (in addition to others) the <em>vg_apol</em></p>
-<ol start="4">
-<li>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>vgchange -ay vg_apol
-</span></span></code></pre></div></li>
-</ol>
-<p>This creates the /dev/<!-- raw HTML omitted -->/&lt;logical_volume&gt; devices so we can mount.</p>
-<ol start="5">
-<li>finally mount the one we need</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>mount /dev/vg_apol/lv_root ./second/
-</span></span></code></pre></div><p>After doing what we want with the mounted filesystem, we need to do reverse
-order, so</p>
-<ol>
-<li>
-<p>umount /dev/vg_apol/lv_root <em>unmount volume</em></p>
-</li>
-<li>
-<p>vgchange -an vg_apol <em>remove logical volume devices</em>
-0 logical volume(s) in volume group &ldquo;vg_apol&rdquo; now active</p>
-</li>
-<li>
-<p>kpartx -d /dev/loop6 <em>remove /dev mapper partitions</em></p>
-</li>
-<li>
-<p>losetup -d /dev/loop6 <em>&ldquo;dettach&rdquo; the loopback device</em></p>
-</li>
-</ol>
-]]></content>
-        </item>
+&lt;p&gt;This will mount the disk image in the loop device.&lt;/p&gt;
+          
         
-    </channel>
+        </description>
+    </item>
+    
+  </channel>
 </rss>
