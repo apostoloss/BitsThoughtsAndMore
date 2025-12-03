@@ -305,5 +305,100 @@ The way to do this manually based on the structure we have is the following.</p>
 ]]></content>
         </item>
         
+        <item>
+            <title>Partition From Xen Instance</title>
+            <link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/disk-image-lvm-mount/</link>
+            <pubDate>Mon, 01 Apr 2019 16:58:19 +0300</pubDate>
+            
+            <guid>https://apostoloss.github.io/BitsThoughtsAndMore/posts/disk-image-lvm-mount/</guid>
+            <description>&lt;h1 id=&#34;how-to-mount-partition-from-xen-instance&#34;&gt;How to mount partition from xen instance&lt;/h1&gt;
+&lt;p&gt;This below describes the way to mount an LVM partition that exists within a
+partition from a multi-partition disk image.&lt;/p&gt;
+&lt;p&gt;Let assume our image is called System.img&lt;/p&gt;
+&lt;p&gt;We will need losetup, kpartx and vgscan,vgchange commands.&lt;/p&gt;
+&lt;p&gt;With losetup -f you will identify free loopback devices.
+let say this is loop6.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;losetup /dev/loop6 ./System.img
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This will mount the disk image in the loop device.&lt;/p&gt;</description>
+            <content type="html"><![CDATA[<h1 id="how-to-mount-partition-from-xen-instance">How to mount partition from xen instance</h1>
+<p>This below describes the way to mount an LVM partition that exists within a
+partition from a multi-partition disk image.</p>
+<p>Let assume our image is called System.img</p>
+<p>We will need losetup, kpartx and vgscan,vgchange commands.</p>
+<p>With losetup -f you will identify free loopback devices.
+let say this is loop6.</p>
+<ol>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>losetup /dev/loop6 ./System.img
+</span></span></code></pre></div></li>
+</ol>
+<p>This will mount the disk image in the loop device.</p>
+<p>You can see partition info with</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>fdisk -l /dev/loop6
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Disk /dev/loop6: 82.6 GB, <span style="color:#ae81ff">82678120448</span> bytes
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">255</span> heads, <span style="color:#ae81ff">63</span> sectors/track, <span style="color:#ae81ff">10051</span> cylinders
+</span></span><span style="display:flex;"><span>Units <span style="color:#f92672">=</span> cylinders of <span style="color:#ae81ff">16065</span> * 512 <span style="color:#f92672">=</span> <span style="color:#ae81ff">8225280</span> bytes
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      Device Boot      Start         End      Blocks   Id  System
+</span></span><span style="display:flex;"><span>/dev/loop6p1   *           <span style="color:#ae81ff">1</span>          <span style="color:#ae81ff">66</span>      <span style="color:#ae81ff">524288</span>   <span style="color:#ae81ff">83</span>  Linux
+</span></span><span style="display:flex;"><span>Partition <span style="color:#ae81ff">1</span> does not end on cylinder boundary.
+</span></span><span style="display:flex;"><span>/dev/loop6p2              <span style="color:#ae81ff">66</span>       <span style="color:#ae81ff">10051</span>    80209345+  8e  Linux LVM
+</span></span></code></pre></div><p>You could possibly remove the loopback mount and remount only the partition you
+want from the total disk by using the offset &lsquo;&rsquo;&rsquo;-o&rsquo;&rsquo;&rsquo; option.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>losetup -d /dev/loop6
+</span></span></code></pre></div><p>offset is the start cylinder multiplied by the size of each, here 512, so
+(start of p2) 66* (512 bytes) 512 = offset is 33792</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>losetup /dev/loop6 System.img -o <span style="color:#ae81ff">33792</span>
+</span></span></code></pre></div><p>However, we will not use that option.</p>
+<p>Instead:</p>
+<ol start="2">
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> kpartx -a /dev/loop6
+</span></span></code></pre></div></li>
+</ol>
+<p>which will create the /dev/mapper/loopXpY devices for all partitions of image</p>
+<ol start="3">
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>vgscan
+</span></span></code></pre></div></li>
+</ol>
+<p>this will show the volume groups that exists in all the devices
+(so eventually search those created above).
+In our example it returned (in addition to others) the <em>vg_apol</em></p>
+<ol start="4">
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>vgchange -ay vg_apol
+</span></span></code></pre></div></li>
+</ol>
+<p>This creates the /dev/<!-- raw HTML omitted -->/&lt;logical_volume&gt; devices so we can mount.</p>
+<ol start="5">
+<li>finally mount the one we need</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>mount /dev/vg_apol/lv_root ./second/
+</span></span></code></pre></div><p>After doing what we want with the mounted filesystem, we need to do reverse
+order, so</p>
+<ol>
+<li>
+<p>umount /dev/vg_apol/lv_root <em>unmount volume</em></p>
+</li>
+<li>
+<p>vgchange -an vg_apol <em>remove logical volume devices</em>
+0 logical volume(s) in volume group &ldquo;vg_apol&rdquo; now active</p>
+</li>
+<li>
+<p>kpartx -d /dev/loop6 <em>remove /dev mapper partitions</em></p>
+</li>
+<li>
+<p>losetup -d /dev/loop6 <em>&ldquo;dettach&rdquo; the loopback device</em></p>
+</li>
+</ol>
+]]></content>
+        </item>
+        
     </channel>
 </rss>

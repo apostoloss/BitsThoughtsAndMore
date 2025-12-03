@@ -43,5 +43,12 @@
       <guid>https://apostoloss.github.io/BitsThoughtsAndMore/posts/blogging_with_hugo/</guid>
       <description>&lt;p&gt;Following a guide from Ryan in youtube.. (&lt;a href=&#34;https://www.youtube.com/watch?v=LIFvgrRxdt4&#34;&gt;https://www.youtube.com/watch?v=LIFvgrRxdt4&lt;/a&gt;)&lt;/p&gt;&#xA;&lt;p&gt;What you need:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;2 repos, one for the code of the site and one to deploy (we are going to use github pages)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Those two repos will be &lt;code&gt;joined&lt;/code&gt; using git submodule.&lt;/p&gt;&#xA;&lt;p&gt;In the code repo do:&#xA;&lt;code&gt;git submodule add -b main &amp;lt;github pages repo&amp;gt; public&lt;/code&gt;&#xA;Where the &lt;code&gt;-b main&lt;/code&gt; is the branch of the repo, abd &lt;code&gt;public&lt;/code&gt; is the folder that will be linked within the code repo and will point to that branch of the github pages repo.&lt;/p&gt;</description>
     </item>
+    <item>
+      <title>Partition From Xen Instance</title>
+      <link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/disk-image-lvm-mount/</link>
+      <pubDate>Mon, 01 Apr 2019 16:58:19 +0300</pubDate>
+      <guid>https://apostoloss.github.io/BitsThoughtsAndMore/posts/disk-image-lvm-mount/</guid>
+      <description>&lt;h1 id=&#34;how-to-mount-partition-from-xen-instance&#34;&gt;How to mount partition from xen instance&lt;/h1&gt;&#xA;&lt;p&gt;This below describes the way to mount an LVM partition that exists within a&#xA;partition from a multi-partition disk image.&lt;/p&gt;&#xA;&lt;p&gt;Let assume our image is called System.img&lt;/p&gt;&#xA;&lt;p&gt;We will need losetup, kpartx and vgscan,vgchange commands.&lt;/p&gt;&#xA;&lt;p&gt;With losetup -f you will identify free loopback devices.&#xA;let say this is loop6.&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;losetup /dev/loop6 ./System.img&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;This will mount the disk image in the loop device.&lt;/p&gt;</description>
+    </item>
   </channel>
 </rss>
