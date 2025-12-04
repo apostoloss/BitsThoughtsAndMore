@@ -5,21 +5,21 @@
     
     
     
-    <link>http://localhost:1313/tags/immich/</link>
+    <link>https://apostoloss.github.io/BitsThoughtsAndMore/tags/immich/</link>
     <description>Recent content in Immich on a blog with Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Fri, 17 May 2024 15:21:29 +0300</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/tags/immich/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://apostoloss.github.io/BitsThoughtsAndMore/tags/immich/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Immich in Docker</title>
-      <link>http://localhost:1313/posts/immich-in-docker/</link>
+      <link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/immich-in-docker/</link>
       <pubDate>Fri, 17 May 2024 15:21:29 +0300</pubDate>
       
-      <guid>http://localhost:1313/posts/immich-in-docker/</guid>
+      <guid>https://apostoloss.github.io/BitsThoughtsAndMore/posts/immich-in-docker/</guid>
       <description>
         
           

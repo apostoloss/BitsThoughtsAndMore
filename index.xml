@@ -5,21 +5,21 @@
     
     
     
-    <link>http://localhost:1313/</link>
+    <link>https://apostoloss.github.io/BitsThoughtsAndMore/</link>
     <description>Recent content on a blog with Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Fri, 17 May 2024 15:21:29 +0300</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://apostoloss.github.io/BitsThoughtsAndMore/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Immich in Docker</title>
-      <link>http://localhost:1313/posts/immich-in-docker/</link>
+      <link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/immich-in-docker/</link>
       <pubDate>Fri, 17 May 2024 15:21:29 +0300</pubDate>
       
-      <guid>http://localhost:1313/posts/immich-in-docker/</guid>
+      <guid>https://apostoloss.github.io/BitsThoughtsAndMore/posts/immich-in-docker/</guid>
       <description>
         
           
@@ -39,10 +39,10 @@ If you lose the database you have to manually rename and organize all files whic
     
     <item>
       <title>Adding Emoji in Hugo Post :smile:</title>
-      <link>http://localhost:1313/posts/adding-emoji-in-hugo-post/</link>
+      <link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/adding-emoji-in-hugo-post/</link>
       <pubDate>Tue, 23 Apr 2024 10:39:09 +0300</pubDate>
       
-      <guid>http://localhost:1313/posts/adding-emoji-in-hugo-post/</guid>
+      <guid>https://apostoloss.github.io/BitsThoughtsAndMore/posts/adding-emoji-in-hugo-post/</guid>
       <description>
         
           
@@ -64,10 +64,10 @@ So in &lt;code&gt;themes/hello-friend/layouts/_default/single.html&lt;/code&gt; 
     
     <item>
       <title>Dumpster Dive</title>
-      <link>http://localhost:1313/stories/dumpster-dive/</link>
+      <link>https://apostoloss.github.io/BitsThoughtsAndMore/stories/dumpster-dive/</link>
       <pubDate>Mon, 22 Apr 2024 19:44:21 +0300</pubDate>
       
-      <guid>http://localhost:1313/stories/dumpster-dive/</guid>
+      <guid>https://apostoloss.github.io/BitsThoughtsAndMore/stories/dumpster-dive/</guid>
       <description>
         
           
@@ -100,10 +100,10 @@ as a result, especially those not really critical (never keep that stuff, they b
     
     <item>
       <title>adding a post by adding a file</title>
-      <link>http://localhost:1313/posts/what-if/</link>
+      <link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/what-if/</link>
       <pubDate>Thu, 18 Apr 2024 12:56:02 +0300</pubDate>
       
-      <guid>http://localhost:1313/posts/what-if/</guid>
+      <guid>https://apostoloss.github.io/BitsThoughtsAndMore/posts/what-if/</guid>
       <description>
         
           
@@ -123,10 +123,10 @@ So &lt;code&gt;hugo&lt;/code&gt; just needs this footer.. and that is all!&lt;/p
     
     <item>
       <title>Blogging with Hugo</title>
-      <link>http://localhost:1313/posts/blogging_with_hugo/</link>
+      <link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/blogging_with_hugo/</link>
       <pubDate>Thu, 18 Apr 2024 12:56:02 +0300</pubDate>
       
-      <guid>http://localhost:1313/posts/blogging_with_hugo/</guid>
+      <guid>https://apostoloss.github.io/BitsThoughtsAndMore/posts/blogging_with_hugo/</guid>
       <description>
         
           
@@ -151,10 +151,10 @@ Where the &lt;code&gt;-b main&lt;/code&gt; is the branch of the repo, abd &lt;co
     
     <item>
       <title>Partition From Xen Instance</title>
-      <link>http://localhost:1313/posts/disk-image-lvm-mount/</link>
+      <link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/disk-image-lvm-mount/</link>
       <pubDate>Mon, 01 Apr 2019 16:58:19 +0300</pubDate>
       
-      <guid>http://localhost:1313/posts/disk-image-lvm-mount/</guid>
+      <guid>https://apostoloss.github.io/BitsThoughtsAndMore/posts/disk-image-lvm-mount/</guid>
       <description>
         
           
