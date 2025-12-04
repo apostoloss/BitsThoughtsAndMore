@@ -1,362 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    
-      <title>
-        Partition From Xen Instance ::
-        a blog with Hugo — ...lost bits..
-      </title>
-    
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta
-  name="description"
-  content=" How to mount partition from xen instance # This below describes the way to mount an LVM partition that exists within a partition from a multi-partition disk image.
+<!doctype html><html lang=en><head><title>Partition From Xen Instance ::
+Bits Thoughts & More, hugo based — ...lost bits..</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content=" How to mount partition from xen instance # This below describes the way to mount an LVM partition that exists within a partition from a multi-partition disk image.
 Let assume our image is called System.img
 We will need losetup, kpartx and vgscan,vgchange commands.
 With losetup -f you will identify free loopback devices. let say this is loop6.
 losetup /dev/loop6 ./System.img This will mount the disk image in the loop device.
-"
-/>
-<meta
-  name="keywords"
-  content=""
-/>
-<meta name="robots" content="noodp" />
-<link rel="canonical" href="https://apostoloss.github.io/BitsThoughtsAndMore/posts/disk-image-lvm-mount/" />
-
-
-
-
-
-
-
-<link rel="stylesheet" href="/BitsThoughtsAndMore/css/style.css" />
-
-<link rel="stylesheet" href="https://apostoloss.github.io/BitsThoughtsAndMore/style.css" />
-
-
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://apostoloss.github.io/BitsThoughtsAndMore/img/apple-touch-icon-144-precomposed.png" />
-<link rel="shortcut icon" href="https://apostoloss.github.io/BitsThoughtsAndMore/img/favicon.png" />
-
-
-<link href="/BitsThoughtsAndMore/fonts/Inter-Italic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
-<link href="/BitsThoughtsAndMore/fonts/Inter-Regular.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
-<link href="/BitsThoughtsAndMore/fonts/Inter-Medium.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
-<link href="/BitsThoughtsAndMore/fonts/Inter-MediumItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
-<link href="/BitsThoughtsAndMore/fonts/Inter-Bold.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
-<link href="/BitsThoughtsAndMore/fonts/Inter-BoldItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
-
-
-
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Partition From Xen Instance">
-  <meta name="twitter:description" content="How to mount partition from xen instance # This below describes the way to mount an LVM partition that exists within a partition from a multi-partition disk image.
+"><meta name=keywords content><meta name=robots content="noodp"><link rel=canonical href=https://apostoloss.github.io/BitsThoughtsAndMore/posts/disk-image-lvm-mount/><link rel=stylesheet href=/BitsThoughtsAndMore/css/style.css><link rel=stylesheet href=https://apostoloss.github.io/BitsThoughtsAndMore/style.css><link rel=apple-touch-icon-precomposed sizes=144x144 href=https://apostoloss.github.io/BitsThoughtsAndMore/img/apple-touch-icon-144-precomposed.png><link rel="shortcut icon" href=https://apostoloss.github.io/BitsThoughtsAndMore/img/favicon.png><link href=/BitsThoughtsAndMore/fonts/Inter-Italic.woff2 rel=preload type=font/woff2 as=font crossorigin><link href=/BitsThoughtsAndMore/fonts/Inter-Regular.woff2 rel=preload type=font/woff2 as=font crossorigin><link href=/BitsThoughtsAndMore/fonts/Inter-Medium.woff2 rel=preload type=font/woff2 as=font crossorigin><link href=/BitsThoughtsAndMore/fonts/Inter-MediumItalic.woff2 rel=preload type=font/woff2 as=font crossorigin><link href=/BitsThoughtsAndMore/fonts/Inter-Bold.woff2 rel=preload type=font/woff2 as=font crossorigin><link href=/BitsThoughtsAndMore/fonts/Inter-BoldItalic.woff2 rel=preload type=font/woff2 as=font crossorigin><meta name=twitter:card content="summary"><meta name=twitter:title content="Partition From Xen Instance"><meta name=twitter:description content="How to mount partition from xen instance # This below describes the way to mount an LVM partition that exists within a partition from a multi-partition disk image.
 Let assume our image is called System.img
 We will need losetup, kpartx and vgscan,vgchange commands.
 With losetup -f you will identify free loopback devices. let say this is loop6.
-losetup /dev/loop6 ./System.img This will mount the disk image in the loop device.">
-
-
-
-<meta property="og:url" content="https://apostoloss.github.io/BitsThoughtsAndMore/posts/disk-image-lvm-mount/">
-  <meta property="og:site_name" content="a blog with Hugo">
-  <meta property="og:title" content="Partition From Xen Instance">
-  <meta property="og:description" content="How to mount partition from xen instance # This below describes the way to mount an LVM partition that exists within a partition from a multi-partition disk image.
+losetup /dev/loop6 ./System.img This will mount the disk image in the loop device."><meta property="og:url" content="https://apostoloss.github.io/BitsThoughtsAndMore/posts/disk-image-lvm-mount/"><meta property="og:site_name" content="Bits Thoughts & More, hugo based"><meta property="og:title" content="Partition From Xen Instance"><meta property="og:description" content="How to mount partition from xen instance # This below describes the way to mount an LVM partition that exists within a partition from a multi-partition disk image.
 Let assume our image is called System.img
 We will need losetup, kpartx and vgscan,vgchange commands.
 With losetup -f you will identify free loopback devices. let say this is loop6.
-losetup /dev/loop6 ./System.img This will mount the disk image in the loop device.">
-  <meta property="og:locale" content="en">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2019-04-01T16:58:19+03:00">
-    <meta property="article:modified_time" content="2019-04-01T16:58:19+03:00">
-
-
-
-
-
-
-  </head>
-  <body class="dark-theme">
-    <div class="container">
-      <header class="header">
-  <span class="header__inner">
-    <a
-  href="/"
-  class="logo"
-  style="text-decoration: none;"
->
-  
-    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
-  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
-</svg>
-</span>
-    <span class="logo__text"
-      >:{}: &lt;</span
-    >
-    <span class="logo__cursor"></span>
-  
-</a>
-
-    <span class="header__right">
-      
-        <nav class="menu">
-  <ul class="menu__inner menu__inner--desktop">
-    
-      
-        
-          <li><a href="/BitsThoughtsAndMore/about">About</a></li>
-        
-      
-        
-          <li><a href="/BitsThoughtsAndMore/notes">notes</a></li>
-        
-      
-      
-        <ul class="menu__sub-inner">
-          <li class="menu__sub-inner-more-trigger">
-            Show more
-            <span class="menu__sub-inner-more-trigger-icon"
-              ><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
-  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
-</svg>
-</span
-            >
-          </li>
-          <ul class="menu__sub-inner-more hidden">
-            
-              
-                <li><a href="/BitsThoughtsAndMore/posts">posts</a></li>
-              
-            
-              
-                <li><a href="/BitsThoughtsAndMore/quotes">quotes</a></li>
-              
-            
-              
-                <li><a href="/BitsThoughtsAndMore/stories">stories</a></li>
-              
-            
-          </ul>
-        </ul>
-      
-      
-  </ul>
-
-  <ul class="menu__inner menu__inner--mobile">
-    
-      
-        <li><a href="/BitsThoughtsAndMore/about">About</a></li>
-      
-    
-      
-        <li><a href="/BitsThoughtsAndMore/notes">notes</a></li>
-      
-    
-      
-        <li><a href="/BitsThoughtsAndMore/posts">posts</a></li>
-      
-    
-      
-        <li><a href="/BitsThoughtsAndMore/quotes">quotes</a></li>
-      
-    
-      
-        <li><a href="/BitsThoughtsAndMore/stories">stories</a></li>
-      
-    
-  </ul>
-</nav>
-
-        <span class="menu-trigger">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M0 0h24v24H0z" fill="none" />
-            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
-          </svg>
-        </span>
-      
-      <span class="theme-toggle">
-        <svg
-  class="theme-toggler"
-  width="24"
-  height="24"
-  viewBox="0 0 48 48"
-  fill="none"
-  xmlns="http://www.w3.org/2000/svg"
->
-  <path
-    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
-  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
-  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
-  />
-</svg>
-
-      </span>
-    </span>
-  </span>
-</header>
-
-
-      <div class="content">
-        
-  
-  
-
-  <article class="post">
-    <h1 class="post-title">Partition From Xen Instance</h1>
-    <div class="post-meta">
-      
-        <time class="post-date">
-          2019-04-01
-        </time>
-
-        
-      
-
-      
-
-
-      
-    </div>
-
-    
-
-    
-
-    <div class="post-content">
-      
-        
-        <h2>Table of Contents</h2>
-        <aside class="table-of-contents"><nav id="TableOfContents"></nav></aside>
-        
-      
-      <h1 id="how-to-mount-partition-from-xen-instance">
-  How to mount partition from xen instance
-  <a href="#how-to-mount-partition-from-xen-instance" class="h-anchor" aria-hidden="true">#</a>
-</h1>
-<p>This below describes the way to mount an LVM partition that exists within a
-partition from a multi-partition disk image.</p>
-<p>Let assume our image is called System.img</p>
-<p>We will need losetup, kpartx and vgscan,vgchange commands.</p>
-<p>With losetup -f you will identify free loopback devices.
-let say this is loop6.</p>
-<ol>
-<li>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>losetup /dev/loop6 ./System.img
-</span></span></code></pre></div></li>
-</ol>
-<p>This will mount the disk image in the loop device.</p>
-<p>You can see partition info with</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>fdisk -l /dev/loop6
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Disk /dev/loop6: 82.6 GB, <span style="color:#ae81ff">82678120448</span> bytes
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">255</span> heads, <span style="color:#ae81ff">63</span> sectors/track, <span style="color:#ae81ff">10051</span> cylinders
-</span></span><span style="display:flex;"><span>Units <span style="color:#f92672">=</span> cylinders of <span style="color:#ae81ff">16065</span> * 512 <span style="color:#f92672">=</span> <span style="color:#ae81ff">8225280</span> bytes
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>      Device Boot      Start         End      Blocks   Id  System
-</span></span><span style="display:flex;"><span>/dev/loop6p1   *           <span style="color:#ae81ff">1</span>          <span style="color:#ae81ff">66</span>      <span style="color:#ae81ff">524288</span>   <span style="color:#ae81ff">83</span>  Linux
-</span></span><span style="display:flex;"><span>Partition <span style="color:#ae81ff">1</span> does not end on cylinder boundary.
-</span></span><span style="display:flex;"><span>/dev/loop6p2              <span style="color:#ae81ff">66</span>       <span style="color:#ae81ff">10051</span>    80209345+  8e  Linux LVM
+losetup /dev/loop6 ./System.img This will mount the disk image in the loop device."><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2019-04-01T16:58:19+03:00"><meta property="article:modified_time" content="2019-04-01T16:58:19+03:00"></head><body class=dark-theme><div class=container><header class=header><span class=header__inner><a href=/BitsThoughtsAndMore/posts class=logo style=text-decoration:none><span class=logo__mark><svg class="greater-icon" viewBox="0 0 44 44"><path fill="none" d="M15 8l14.729 14.382L15 35.367"/></svg>
+</span><span class=logo__text>:{}: &lt;</span>
+<span class=logo__cursor></span>
+</a><span class=header__right><nav class=menu><ul class="menu__inner menu__inner--desktop"><li><a href=/BitsThoughtsAndMore/about>About</a></li><li><a href=/BitsThoughtsAndMore/posts>posts</a></li><ul class=menu__sub-inner><li class=menu__sub-inner-more-trigger>Show more
+<span class=menu__sub-inner-more-trigger-icon><svg class="greater-icon" viewBox="0 0 44 44"><path fill="none" d="M15 8l14.729 14.382L15 35.367"/></svg></span></li><ul class="menu__sub-inner-more hidden"><li><a href=/BitsThoughtsAndMore/stories>stories</a></li></ul></ul></ul><ul class="menu__inner menu__inner--mobile"><li><a href=/BitsThoughtsAndMore/about>About</a></li><li><a href=/BitsThoughtsAndMore/posts>posts</a></li><li><a href=/BitsThoughtsAndMore/stories>stories</a></li></ul></nav><span class=menu-trigger><svg viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+</span><span class=theme-toggle><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none"><path d="M22 41c10.4934.0 19-8.5066 19-19C41 11.5066 32.4934 3 22 3 11.5066 3 3 11.5066 3 22s8.5066 19 19 19zM7 22C7 13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22z"/></svg></span></span></span></header><div class=content><article class=post><h1 class=post-title>Partition From Xen Instance</h1><div class=post-meta><time class=post-date>2019-04-01</time></div><div class=post-content><h1 id=how-to-mount-partition-from-xen-instance>How to mount partition from xen instance
+<a href=#how-to-mount-partition-from-xen-instance class=h-anchor aria-hidden=true>#</a></h1><p>This below describes the way to mount an LVM partition that exists within a
+partition from a multi-partition disk image.</p><p>Let assume our image is called System.img</p><p>We will need losetup, kpartx and vgscan,vgchange commands.</p><p>With losetup -f you will identify free loopback devices.
+let say this is loop6.</p><ol><li><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>losetup /dev/loop6 ./System.img
+</span></span></code></pre></div></li></ol><p>This will mount the disk image in the loop device.</p><p>You can see partition info with</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>fdisk -l /dev/loop6
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Disk /dev/loop6: 82.6 GB, <span style=color:#ae81ff>82678120448</span> bytes
+</span></span><span style=display:flex><span><span style=color:#ae81ff>255</span> heads, <span style=color:#ae81ff>63</span> sectors/track, <span style=color:#ae81ff>10051</span> cylinders
+</span></span><span style=display:flex><span>Units <span style=color:#f92672>=</span> cylinders of <span style=color:#ae81ff>16065</span> * 512 <span style=color:#f92672>=</span> <span style=color:#ae81ff>8225280</span> bytes
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      Device Boot      Start         End      Blocks   Id  System
+</span></span><span style=display:flex><span>/dev/loop6p1   *           <span style=color:#ae81ff>1</span>          <span style=color:#ae81ff>66</span>      <span style=color:#ae81ff>524288</span>   <span style=color:#ae81ff>83</span>  Linux
+</span></span><span style=display:flex><span>Partition <span style=color:#ae81ff>1</span> does not end on cylinder boundary.
+</span></span><span style=display:flex><span>/dev/loop6p2              <span style=color:#ae81ff>66</span>       <span style=color:#ae81ff>10051</span>    80209345+  8e  Linux LVM
 </span></span></code></pre></div><p>You could possibly remove the loopback mount and remount only the partition you
-want from the total disk by using the offset &lsquo;&rsquo;&rsquo;-o&rsquo;&rsquo;&rsquo; option.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>losetup -d /dev/loop6
+want from the total disk by using the offset &lsquo;&rsquo;&rsquo;-o&rsquo;&rsquo;&rsquo; option.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>losetup -d /dev/loop6
 </span></span></code></pre></div><p>offset is the start cylinder multiplied by the size of each, here 512, so
-(start of p2) 66* (512 bytes) 512 = offset is 33792</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>losetup /dev/loop6 System.img -o <span style="color:#ae81ff">33792</span>
-</span></span></code></pre></div><p>However, we will not use that option.</p>
-<p>Instead:</p>
-<ol start="2">
-<li>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> kpartx -a /dev/loop6
-</span></span></code></pre></div></li>
-</ol>
-<p>which will create the /dev/mapper/loopXpY devices for all partitions of image</p>
-<ol start="3">
-<li>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>vgscan
-</span></span></code></pre></div></li>
-</ol>
-<p>this will show the volume groups that exists in all the devices
+(start of p2) 66* (512 bytes) 512 = offset is 33792</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>losetup /dev/loop6 System.img -o <span style=color:#ae81ff>33792</span>
+</span></span></code></pre></div><p>However, we will not use that option.</p><p>Instead:</p><ol start=2><li><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span> kpartx -a /dev/loop6
+</span></span></code></pre></div></li></ol><p>which will create the /dev/mapper/loopXpY devices for all partitions of image</p><ol start=3><li><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>vgscan
+</span></span></code></pre></div></li></ol><p>this will show the volume groups that exists in all the devices
 (so eventually search those created above).
-In our example it returned (in addition to others) the <em>vg_apol</em></p>
-<ol start="4">
-<li>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>vgchange -ay vg_apol
-</span></span></code></pre></div></li>
-</ol>
-<p>This creates the /dev/<!-- raw HTML omitted -->/&lt;logical_volume&gt; devices so we can mount.</p>
-<ol start="5">
-<li>finally mount the one we need</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>mount /dev/vg_apol/lv_root ./second/
+In our example it returned (in addition to others) the <em>vg_apol</em></p><ol start=4><li><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>vgchange -ay vg_apol
+</span></span></code></pre></div></li></ol><p>This creates the /dev//&lt;logical_volume> devices so we can mount.</p><ol start=5><li>finally mount the one we need</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>mount /dev/vg_apol/lv_root ./second/
 </span></span></code></pre></div><p>After doing what we want with the mounted filesystem, we need to do reverse
-order, so</p>
-<ol>
-<li>
-<p>umount /dev/vg_apol/lv_root <em>unmount volume</em></p>
-</li>
-<li>
-<p>vgchange -an vg_apol <em>remove logical volume devices</em>
-0 logical volume(s) in volume group &ldquo;vg_apol&rdquo; now active</p>
-</li>
-<li>
-<p>kpartx -d /dev/loop6 <em>remove /dev mapper partitions</em></p>
-</li>
-<li>
-<p>losetup -d /dev/loop6 <em>&ldquo;dettach&rdquo; the loopback device</em></p>
-</li>
-</ol>
-
-    </div>
-    
-
-    
-      
-    
-  </article>
-
-      </div>
-
-      
-        <footer class="footer">
-  <div class="footer__inner">
-    
-      <a
-  href="/"
-  class="logo"
-  style="text-decoration: none;"
->
-  
-    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
-  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
-</svg>
-</span>
-    <span class="logo__text"
-      >:{}: &lt;</span
-    >
-    <span class="logo__cursor"></span>
-  
-</a>
-
-      <div class="copyright">
-        <span>© 2025 Powered by <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span>
-        <span><a href="https://github.com/panr/hugo-theme-hello-friend" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
-      </div>
-    
-  </div>
-</footer>
-
-
-
-
-
-<script type="text/javascript" src="/BitsThoughtsAndMore/bundle.min.js"></script>
-
-
-      
-    </div>
-
-  </body>
-</html>
+order, so</p><ol><li><p>umount /dev/vg_apol/lv_root <em>unmount volume</em></p></li><li><p>vgchange -an vg_apol <em>remove logical volume devices</em>
+0 logical volume(s) in volume group &ldquo;vg_apol&rdquo; now active</p></li><li><p>kpartx -d /dev/loop6 <em>remove /dev mapper partitions</em></p></li><li><p>losetup -d /dev/loop6 <em>&ldquo;dettach&rdquo; the loopback device</em></p></li></ol></div></article></div><footer class=footer><div class=footer__inner><a href=/BitsThoughtsAndMore/posts class=logo style=text-decoration:none><span class=logo__mark><svg class="greater-icon" viewBox="0 0 44 44"><path fill="none" d="M15 8l14.729 14.382L15 35.367"/></svg>
+</span><span class=logo__text>:{}: &lt;</span>
+<span class=logo__cursor></span></a><div class=copyright><span>© 2025 Powered by <a href=https://gohugo.io target=_blank rel=noopener>Hugo</a></span>
+<span><a href=https://github.com/panr/hugo-theme-hello-friend target=_blank>Original Theme</a> made by
+<a href=https://github.com/panr target=_blank>panr</a></span></div></div></footer><script type=text/javascript src=/BitsThoughtsAndMore/bundle.min.js></script></div></body></html>
