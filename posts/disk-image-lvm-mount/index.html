@@ -12,7 +12,7 @@ losetup /dev/loop6 ./System.img This will mount the disk image in the loop devic
 Let assume our image is called System.img
 We will need losetup, kpartx and vgscan,vgchange commands.
 With losetup -f you will identify free loopback devices. let say this is loop6.
-losetup /dev/loop6 ./System.img This will mount the disk image in the loop device."><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2019-04-01T16:58:19+03:00"><meta property="article:modified_time" content="2019-04-01T16:58:19+03:00"></head><body class=dark-theme><div class=container><header class=header><span class=header__inner><a href=/BitsThoughtsAndMore/posts class=logo style=text-decoration:none><span class=logo__mark><svg class="greater-icon" viewBox="0 0 44 44"><path fill="none" d="M15 8l14.729 14.382L15 35.367"/></svg>
+losetup /dev/loop6 ./System.img This will mount the disk image in the loop device."><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2019-04-01T16:58:19+03:00"><meta property="article:modified_time" content="2019-04-01T16:58:19+03:00"></head><body class=dark-theme><div class=container><header class=header><span class=header__inner><a href=/BitsThoughtsAndMore/posts class=logo style=text-decoration:none><span class=logo__mark><svg class="greater-icon" viewBox="0 0 44 44"><path fill="none" d="M15 8l14.729 14.382L15 35.367"/></svg>
 </span><span class=logo__text>:{}: &lt;</span>
 <span class=logo__cursor></span>
 </a><span class=header__right><nav class=menu><ul class="menu__inner menu__inner--desktop"><li><a href=/BitsThoughtsAndMore/about>About</a></li><li><a href=/BitsThoughtsAndMore/posts>posts</a></li><ul class=menu__sub-inner><li class=menu__sub-inner-more-trigger>Show more
@@ -45,6 +45,6 @@ In our example it returned (in addition to others) the <em>vg_apol</em></p><ol s
 order, so</p><ol><li><p>umount /dev/vg_apol/lv_root <em>unmount volume</em></p></li><li><p>vgchange -an vg_apol <em>remove logical volume devices</em>
 0 logical volume(s) in volume group &ldquo;vg_apol&rdquo; now active</p></li><li><p>kpartx -d /dev/loop6 <em>remove /dev mapper partitions</em></p></li><li><p>losetup -d /dev/loop6 <em>&ldquo;dettach&rdquo; the loopback device</em></p></li></ol></div></article></div><footer class=footer><div class=footer__inner><a href=/BitsThoughtsAndMore/posts class=logo style=text-decoration:none><span class=logo__mark><svg class="greater-icon" viewBox="0 0 44 44"><path fill="none" d="M15 8l14.729 14.382L15 35.367"/></svg>
 </span><span class=logo__text>:{}: &lt;</span>
-<span class=logo__cursor></span></a><div class=copyright><span>© 2025 Powered by <a href=https://gohugo.io target=_blank rel=noopener>Hugo</a></span>
+<span class=logo__cursor></span></a><div class=copyright><span>© 2026 Powered by <a href=https://gohugo.io target=_blank rel=noopener>Hugo</a></span>
 <span><a href=https://github.com/panr/hugo-theme-hello-friend target=_blank>Original Theme</a> made by
 <a href=https://github.com/panr target=_blank>panr</a></span></div></div></footer><script type=text/javascript src=/BitsThoughtsAndMore/bundle.min.js></script></div></body></html>
