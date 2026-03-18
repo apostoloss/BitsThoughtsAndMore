@@ -12,7 +12,7 @@ So in &lt;code&gt;themes/hello-friend/layouts/_default/single.html&lt;/code&gt; 
 &lt;p&gt;So how about just create a new file in the correct file structure and not use the &lt;code&gt;hugo new post&lt;/code&gt;?
 as it turns out it works exactly as expected&amp;hellip;
 So &lt;code&gt;hugo&lt;/code&gt; just needs this footer.. and that is all!&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-txt" data-lang="txt"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;+++
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-txt" data-lang="txt"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;+++
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;title = &amp;#39;adding a post by adding a file&amp;#39;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;date = 2024-04-18T12:56:02+03:00
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;tags = [&amp;#39;hugo&amp;#39;, &amp;#39;blogging&amp;#39;]
@@ -122,7 +122,7 @@ partition from a multi-partition disk image.&lt;/p&gt;
 let say this is loop6.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;losetup /dev/loop6 ./System.img
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;losetup /dev/loop6 ./System.img
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;This will mount the disk image in the loop device.&lt;/p&gt;</description></item><item><title>Docker Registry</title><link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/docker-registry/</link><pubDate>Mon, 01 Apr 2019 00:00:00 +0000</pubDate><guid>https://apostoloss.github.io/BitsThoughtsAndMore/posts/docker-registry/</guid><description>
@@ -133,14 +133,14 @@ how to move a docker image to another registry (example push to localhost regist
 &lt;p&gt;first you need to tag an existing image to another name containing the target registry
 do a &lt;code&gt;docker images&lt;/code&gt; to get a list of images already downloaded
 command below tags &lt;code&gt;redis:3-alpine&lt;/code&gt; as &lt;code&gt;localhost:5000/redis:3-alpine&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker tag redis:3-alpine localhost:5000/redis:3-alpine
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker tag redis:3-alpine localhost:5000/redis:3-alpine
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;then just &lt;code&gt;push&lt;/code&gt; the new tag&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker push localhost:5000/redis:3-alpine
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker push localhost:5000/redis:3-alpine
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id="and-with-a-curl-you-can-see-the-output-of-the-catalog-in-our-127001-localhost-registry"&gt;
 and with a curl you can see the output of the catalog in our 127.0.0.1 (localhost) registry
 &lt;a href="#and-with-a-curl-you-can-see-the-output-of-the-catalog-in-our-127001-localhost-registry" class="h-anchor" aria-hidden="true"&gt;#&lt;/a&gt;
 &lt;/h1&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;curl http://127.0.0.1:5000/v2/_catalog
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;curl http://127.0.0.1:5000/v2/_catalog
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;more info : &lt;code&gt;https://stackoverflow.com/questions/31251356/how-to-get-a-list-of-images-on-docker-registry-v2&lt;/code&gt;&lt;/p&gt;</description></item><item><title>curl auth with cookie</title><link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/curl-auth-with-cookie/</link><pubDate>Wed, 18 Apr 2018 00:00:00 +0000</pubDate><guid>https://apostoloss.github.io/BitsThoughtsAndMore/posts/curl-auth-with-cookie/</guid><description>
 &lt;p&gt;use curl to simulate authentication in apis that provide a cookie via auth endpoint
 (nimbula was using this)&lt;/p&gt;

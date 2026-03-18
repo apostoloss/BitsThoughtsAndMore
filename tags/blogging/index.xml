@@ -2,7 +2,7 @@
 &lt;p&gt;So how about just create a new file in the correct file structure and not use the &lt;code&gt;hugo new post&lt;/code&gt;?
 as it turns out it works exactly as expected&amp;hellip;
 So &lt;code&gt;hugo&lt;/code&gt; just needs this footer.. and that is all!&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-txt" data-lang="txt"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;+++
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-txt" data-lang="txt"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;+++
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;title = &amp;#39;adding a post by adding a file&amp;#39;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;date = 2024-04-18T12:56:02+03:00
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;tags = [&amp;#39;hugo&amp;#39;, &amp;#39;blogging&amp;#39;]

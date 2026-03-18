@@ -29,12 +29,12 @@ how to move a docker image to another registry (example push to localhost regist
 &lt;p&gt;first you need to tag an existing image to another name containing the target registry
 do a &lt;code&gt;docker images&lt;/code&gt; to get a list of images already downloaded
 command below tags &lt;code&gt;redis:3-alpine&lt;/code&gt; as &lt;code&gt;localhost:5000/redis:3-alpine&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker tag redis:3-alpine localhost:5000/redis:3-alpine
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker tag redis:3-alpine localhost:5000/redis:3-alpine
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;then just &lt;code&gt;push&lt;/code&gt; the new tag&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker push localhost:5000/redis:3-alpine
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker push localhost:5000/redis:3-alpine
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id="and-with-a-curl-you-can-see-the-output-of-the-catalog-in-our-127001-localhost-registry"&gt;
 and with a curl you can see the output of the catalog in our 127.0.0.1 (localhost) registry
 &lt;a href="#and-with-a-curl-you-can-see-the-output-of-the-catalog-in-our-127001-localhost-registry" class="h-anchor" aria-hidden="true"&gt;#&lt;/a&gt;
 &lt;/h1&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;curl http://127.0.0.1:5000/v2/_catalog
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;curl http://127.0.0.1:5000/v2/_catalog
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;more info : &lt;code&gt;https://stackoverflow.com/questions/31251356/how-to-get-a-list-of-images-on-docker-registry-v2&lt;/code&gt;&lt;/p&gt;</description></item></channel></rss>
