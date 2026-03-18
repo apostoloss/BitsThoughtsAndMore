@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Apm on Bits Thoughts &amp; More, hugo based</title><link>https://apostoloss.github.io/BitsThoughtsAndMore/tags/apm/</link><description>Recent content in Apm on Bits Thoughts &amp; More, hugo based</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 09 Apr 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://apostoloss.github.io/BitsThoughtsAndMore/tags/apm/index.xml" rel="self" type="application/rss+xml"/><item><title>Elastic Components Notes</title><link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/elastic-components-notes/</link><pubDate>Thu, 09 Apr 2020 00:00:00 +0000</pubDate><guid>https://apostoloss.github.io/BitsThoughtsAndMore/posts/elastic-components-notes/</guid><description>
+&lt;h1 id="elasticsearch-components"&gt;
+elasticsearch components
+&lt;a href="#elasticsearch-components" class="h-anchor" aria-hidden="true"&gt;#&lt;/a&gt;
+&lt;/h1&gt;
+&lt;h2 id="apm-server"&gt;
+apm server
+&lt;a href="#apm-server" class="h-anchor" aria-hidden="true"&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;running an apm-server for testing purposes in your local machine (here is mac)
+&lt;code&gt;$GOPATH/bin/apm-server run -v -e -c ~/citrix/testing-apm/apm-server.yml -E apm-server.expvar.enabled=true&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id="config"&gt;
+config:
+&lt;a href="#config" class="h-anchor" aria-hidden="true"&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://www.elastic.co/guide/en/apm/server/current/configuration-monitor.html#_bulk_max_size_6"&gt;https://www.elastic.co/guide/en/apm/server/current/configuration-monitor.html#_bulk_max_size_6&lt;/a&gt;
+&lt;a href="https://www.elastic.co/guide/en/apm/server/current/elasticsearch-output.html"&gt;https://www.elastic.co/guide/en/apm/server/current/elasticsearch-output.html&lt;/a&gt;
+&lt;a href="https://www.elastic.co/guide/en/apm/server/current/apm-server-configuration.html"&gt;https://www.elastic.co/guide/en/apm/server/current/apm-server-configuration.html&lt;/a&gt;
+&lt;a href="https://www.elastic.co/guide/en/apm/server/current/running-on-docker.html"&gt;https://www.elastic.co/guide/en/apm/server/current/running-on-docker.html&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="troubleshooting"&gt;
+troubleshooting
+&lt;a href="#troubleshooting" class="h-anchor" aria-hidden="true"&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://www.elastic.co/guide/en/apm/server/current/common-problems.html"&gt;https://www.elastic.co/guide/en/apm/server/current/common-problems.html&lt;/a&gt;
+&lt;a href="https://www.elastic.co/guide/en/apm/server/current/common-problems.html#queue-full"&gt;https://www.elastic.co/guide/en/apm/server/current/common-problems.html#queue-full&lt;/a&gt;
+&lt;a href="https://www.elastic.co/guide/en/apm/server/current/common-problems.html#request-timed-out"&gt;https://www.elastic.co/guide/en/apm/server/current/common-problems.html#request-timed-out&lt;/a&gt;
+&lt;a href="https://www.elastic.co/guide/en/apm/server/master/common-problems.html#io-timeout"&gt;https://www.elastic.co/guide/en/apm/server/master/common-problems.html#io-timeout&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="sizing"&gt;
+sizing:
+&lt;a href="#sizing" class="h-anchor" aria-hidden="true"&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://www.elastic.co/guide/en/apm/server/current/sizing-guide.html"&gt;https://www.elastic.co/guide/en/apm/server/current/sizing-guide.html&lt;/a&gt;
+&lt;a href="https://www.elastic.co/guide/en/apm/server/current/processing-performance.html"&gt;https://www.elastic.co/guide/en/apm/server/current/processing-performance.html&lt;/a&gt;
+&lt;a href="https://www.elastic.co/guide/en/apm/server/current/tune-apm-server.html"&gt;https://www.elastic.co/guide/en/apm/server/current/tune-apm-server.html&lt;/a&gt;
+&lt;a href="https://www.elastic.co/guide/en/apm/get-started/7.6/transaction-spans.html"&gt;https://www.elastic.co/guide/en/apm/get-started/7.6/transaction-spans.html&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="testingstressing"&gt;
+testing/stressing:
+&lt;a href="#testingstressing" class="h-anchor" aria-hidden="true"&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://github.com/elastic/hey-apm"&gt;https://github.com/elastic/hey-apm&lt;/a&gt;
+&lt;a href="https://github.com/elastic/apm-server/issues/1414"&gt;https://github.com/elastic/apm-server/issues/1414&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="agent"&gt;
+agent:
+&lt;a href="#agent" class="h-anchor" aria-hidden="true"&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://www.elastic.co/guide/en/apm/agent/python/4.x/configuration.html"&gt;https://www.elastic.co/guide/en/apm/agent/python/4.x/configuration.html&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="test-an-apm-server"&gt;
+test an apm server
+&lt;a href="#test-an-apm-server" class="h-anchor" aria-hidden="true"&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Make 2 files for running the server and the hey-apm benchmarking tool for it&lt;/p&gt;</description></item></channel></rss>

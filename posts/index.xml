@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Bits Thoughts &amp; More, hugo based</title><link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/</link><description>Recent content in Posts on Bits Thoughts &amp; More, hugo based</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 17 May 2024 15:21:29 +0300</lastBuildDate><atom:link href="https://apostoloss.github.io/BitsThoughtsAndMore/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Immich in Docker</title><link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/immich-in-docker/</link><pubDate>Fri, 17 May 2024 15:21:29 +0300</pubDate><guid>https://apostoloss.github.io/BitsThoughtsAndMore/posts/immich-in-docker/</guid><description>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Bits Thoughts &amp; More, hugo based</title><link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/</link><description>Recent content in Posts on Bits Thoughts &amp; More, hugo based</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 17 May 2025 15:21:29 +0300</lastBuildDate><atom:link href="https://apostoloss.github.io/BitsThoughtsAndMore/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Immich in Docker</title><link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/immich-in-docker/</link><pubDate>Fri, 17 May 2024 15:21:29 +0300</pubDate><guid>https://apostoloss.github.io/BitsThoughtsAndMore/posts/immich-in-docker/</guid><description>
 &lt;p&gt;&lt;a href="https://immich.app/"&gt;Immich&lt;/a&gt; &lt;a href="https://github.com/immich-app/immich"&gt;(github)&lt;/a&gt; is a media library tool.&lt;/p&gt;
 &lt;p&gt;At some point I&amp;rsquo;ve lost my QNAP drives (both at the almost the same time) and wanted to check if I could replace the &lt;em&gt;PhotoStation&lt;/em&gt; with an opensource tool.&lt;/p&gt;
 &lt;p&gt;Immich was one of the candidates but if has a major drawback for me. I dislike that it renames the files you upload/import/sync with it. Although it allows you to download them and the metadata it keeps (in a database) contain all the info and the result you get is the original filenames, you cannot suddenly stop using it and pick the file structure and use it.
@@ -28,7 +28,88 @@ So &lt;code&gt;hugo&lt;/code&gt; just needs this footer.. and that is all!&lt;/p
 &lt;p&gt;Those two repos will be &lt;code&gt;joined&lt;/code&gt; using git submodule.&lt;/p&gt;
 &lt;p&gt;In the code repo do:
 &lt;code&gt;git submodule add -b main &amp;lt;github pages repo&amp;gt; public&lt;/code&gt;
-Where the &lt;code&gt;-b main&lt;/code&gt; is the branch of the repo, abd &lt;code&gt;public&lt;/code&gt; is the folder that will be linked within the code repo and will point to that branch of the github pages repo.&lt;/p&gt;</description></item><item><title>Partition From Xen Instance</title><link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/disk-image-lvm-mount/</link><pubDate>Mon, 01 Apr 2019 16:58:19 +0300</pubDate><guid>https://apostoloss.github.io/BitsThoughtsAndMore/posts/disk-image-lvm-mount/</guid><description>
+Where the &lt;code&gt;-b main&lt;/code&gt; is the branch of the repo, abd &lt;code&gt;public&lt;/code&gt; is the folder that will be linked within the code repo and will point to that branch of the github pages repo.&lt;/p&gt;</description></item><item><title>letsencrypt and traefik with docker compose</title><link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/docker-compose-letsencrypt-and-traefik/</link><pubDate>Wed, 03 Apr 2024 00:00:00 +0000</pubDate><guid>https://apostoloss.github.io/BitsThoughtsAndMore/posts/docker-compose-letsencrypt-and-traefik/</guid><description>
+&lt;h2 id="problem-statement"&gt;
+problem statement
+&lt;a href="#problem-statement" class="h-anchor" aria-hidden="true"&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;In a free tier oci instance I wanted to have a single point of entry with TLS and valid certs
+I also wanted to have multiple containers served using a wildcard domain.
+Also needed to be able to add new containers and immediately have them available with cert and fqdn&lt;/p&gt;
+&lt;h2 id="bom"&gt;
+BOM
+&lt;a href="#bom" class="h-anchor" aria-hidden="true"&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;traefik&lt;/li&gt;
+&lt;li&gt;duckdns&lt;/li&gt;
+&lt;li&gt;letsencrypt&lt;/li&gt;
+&lt;li&gt;docker compose&lt;/li&gt;
+&lt;li&gt;env-file for docker compose&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="docker-compose"&gt;
+docker compose
+&lt;a href="#docker-compose" class="h-anchor" aria-hidden="true"&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;This is the choice for deploying services.&lt;/p&gt;</description></item><item><title>elasticsearch notes from a slack app</title><link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/elasticsearch-series/</link><pubDate>Wed, 29 Dec 2021 00:00:00 +0000</pubDate><guid>https://apostoloss.github.io/BitsThoughtsAndMore/posts/elasticsearch-series/</guid><description>
+&lt;h2 id="creating-a-small-app-with-es-as-backend"&gt;
+creating a small app with ES as backend
+&lt;a href="#creating-a-small-app-with-es-as-backend" class="h-anchor" aria-hidden="true"&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;This is a series about a slack related app where we use ES as the backend for every event we would possibly like to store for analysis.&lt;/p&gt;
+&lt;p&gt;There are few things we need to consider and the first is related to the fields provided by the slack api that are related to dates and timestamps.&lt;/p&gt;
+&lt;p&gt;Most of them are ending with &lt;code&gt;ts&lt;/code&gt;.
+By storing all events in ES we can then go and identify them.&lt;/p&gt;</description></item><item><title>Elastic Components Notes</title><link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/elastic-components-notes/</link><pubDate>Thu, 09 Apr 2020 00:00:00 +0000</pubDate><guid>https://apostoloss.github.io/BitsThoughtsAndMore/posts/elastic-components-notes/</guid><description>
+&lt;h1 id="elasticsearch-components"&gt;
+elasticsearch components
+&lt;a href="#elasticsearch-components" class="h-anchor" aria-hidden="true"&gt;#&lt;/a&gt;
+&lt;/h1&gt;
+&lt;h2 id="apm-server"&gt;
+apm server
+&lt;a href="#apm-server" class="h-anchor" aria-hidden="true"&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;running an apm-server for testing purposes in your local machine (here is mac)
+&lt;code&gt;$GOPATH/bin/apm-server run -v -e -c ~/citrix/testing-apm/apm-server.yml -E apm-server.expvar.enabled=true&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id="config"&gt;
+config:
+&lt;a href="#config" class="h-anchor" aria-hidden="true"&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://www.elastic.co/guide/en/apm/server/current/configuration-monitor.html#_bulk_max_size_6"&gt;https://www.elastic.co/guide/en/apm/server/current/configuration-monitor.html#_bulk_max_size_6&lt;/a&gt;
+&lt;a href="https://www.elastic.co/guide/en/apm/server/current/elasticsearch-output.html"&gt;https://www.elastic.co/guide/en/apm/server/current/elasticsearch-output.html&lt;/a&gt;
+&lt;a href="https://www.elastic.co/guide/en/apm/server/current/apm-server-configuration.html"&gt;https://www.elastic.co/guide/en/apm/server/current/apm-server-configuration.html&lt;/a&gt;
+&lt;a href="https://www.elastic.co/guide/en/apm/server/current/running-on-docker.html"&gt;https://www.elastic.co/guide/en/apm/server/current/running-on-docker.html&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="troubleshooting"&gt;
+troubleshooting
+&lt;a href="#troubleshooting" class="h-anchor" aria-hidden="true"&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://www.elastic.co/guide/en/apm/server/current/common-problems.html"&gt;https://www.elastic.co/guide/en/apm/server/current/common-problems.html&lt;/a&gt;
+&lt;a href="https://www.elastic.co/guide/en/apm/server/current/common-problems.html#queue-full"&gt;https://www.elastic.co/guide/en/apm/server/current/common-problems.html#queue-full&lt;/a&gt;
+&lt;a href="https://www.elastic.co/guide/en/apm/server/current/common-problems.html#request-timed-out"&gt;https://www.elastic.co/guide/en/apm/server/current/common-problems.html#request-timed-out&lt;/a&gt;
+&lt;a href="https://www.elastic.co/guide/en/apm/server/master/common-problems.html#io-timeout"&gt;https://www.elastic.co/guide/en/apm/server/master/common-problems.html#io-timeout&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="sizing"&gt;
+sizing:
+&lt;a href="#sizing" class="h-anchor" aria-hidden="true"&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://www.elastic.co/guide/en/apm/server/current/sizing-guide.html"&gt;https://www.elastic.co/guide/en/apm/server/current/sizing-guide.html&lt;/a&gt;
+&lt;a href="https://www.elastic.co/guide/en/apm/server/current/processing-performance.html"&gt;https://www.elastic.co/guide/en/apm/server/current/processing-performance.html&lt;/a&gt;
+&lt;a href="https://www.elastic.co/guide/en/apm/server/current/tune-apm-server.html"&gt;https://www.elastic.co/guide/en/apm/server/current/tune-apm-server.html&lt;/a&gt;
+&lt;a href="https://www.elastic.co/guide/en/apm/get-started/7.6/transaction-spans.html"&gt;https://www.elastic.co/guide/en/apm/get-started/7.6/transaction-spans.html&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="testingstressing"&gt;
+testing/stressing:
+&lt;a href="#testingstressing" class="h-anchor" aria-hidden="true"&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://github.com/elastic/hey-apm"&gt;https://github.com/elastic/hey-apm&lt;/a&gt;
+&lt;a href="https://github.com/elastic/apm-server/issues/1414"&gt;https://github.com/elastic/apm-server/issues/1414&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="agent"&gt;
+agent:
+&lt;a href="#agent" class="h-anchor" aria-hidden="true"&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://www.elastic.co/guide/en/apm/agent/python/4.x/configuration.html"&gt;https://www.elastic.co/guide/en/apm/agent/python/4.x/configuration.html&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="test-an-apm-server"&gt;
+test an apm server
+&lt;a href="#test-an-apm-server" class="h-anchor" aria-hidden="true"&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Make 2 files for running the server and the hey-apm benchmarking tool for it&lt;/p&gt;</description></item><item><title>Partition From Xen Instance</title><link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/disk-image-lvm-mount/</link><pubDate>Mon, 01 Apr 2019 16:58:19 +0300</pubDate><guid>https://apostoloss.github.io/BitsThoughtsAndMore/posts/disk-image-lvm-mount/</guid><description>
 &lt;h1 id="how-to-mount-partition-from-xen-instance"&gt;
 How to mount partition from xen instance
 &lt;a href="#how-to-mount-partition-from-xen-instance" class="h-anchor" aria-hidden="true"&gt;#&lt;/a&gt;
@@ -44,4 +125,26 @@ let say this is loop6.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;losetup /dev/loop6 ./System.img
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;This will mount the disk image in the loop device.&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;This will mount the disk image in the loop device.&lt;/p&gt;</description></item><item><title>Docker Registry</title><link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/docker-registry/</link><pubDate>Mon, 01 Apr 2019 00:00:00 +0000</pubDate><guid>https://apostoloss.github.io/BitsThoughtsAndMore/posts/docker-registry/</guid><description>
+&lt;h1 id="how-to-move-a-docker-image-to-another-registry-example-push-to-localhost-registry"&gt;
+how to move a docker image to another registry (example push to localhost registry)
+&lt;a href="#how-to-move-a-docker-image-to-another-registry-example-push-to-localhost-registry" class="h-anchor" aria-hidden="true"&gt;#&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;first you need to tag an existing image to another name containing the target registry
+do a &lt;code&gt;docker images&lt;/code&gt; to get a list of images already downloaded
+command below tags &lt;code&gt;redis:3-alpine&lt;/code&gt; as &lt;code&gt;localhost:5000/redis:3-alpine&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker tag redis:3-alpine localhost:5000/redis:3-alpine
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;then just &lt;code&gt;push&lt;/code&gt; the new tag&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker push localhost:5000/redis:3-alpine
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id="and-with-a-curl-you-can-see-the-output-of-the-catalog-in-our-127001-localhost-registry"&gt;
+and with a curl you can see the output of the catalog in our 127.0.0.1 (localhost) registry
+&lt;a href="#and-with-a-curl-you-can-see-the-output-of-the-catalog-in-our-127001-localhost-registry" class="h-anchor" aria-hidden="true"&gt;#&lt;/a&gt;
+&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;curl http://127.0.0.1:5000/v2/_catalog
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;more info : &lt;code&gt;https://stackoverflow.com/questions/31251356/how-to-get-a-list-of-images-on-docker-registry-v2&lt;/code&gt;&lt;/p&gt;</description></item><item><title>curl auth with cookie</title><link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/curl-auth-with-cookie/</link><pubDate>Wed, 18 Apr 2018 00:00:00 +0000</pubDate><guid>https://apostoloss.github.io/BitsThoughtsAndMore/posts/curl-auth-with-cookie/</guid><description>
+&lt;p&gt;use curl to simulate authentication in apis that provide a cookie via auth endpoint
+(nimbula was using this)&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;curl -kc ./authtokens -X POST -H &amp;#34;Content-Type: text/plain&amp;#34; -d &amp;#39;{&amp;#34;result&amp;#34;: null, &amp;#34;password&amp;#34;: &amp;#34;testpassword&amp;#34;, &amp;#34;uri&amp;#34;: null, &amp;#34;user&amp;#34;: &amp;#34;/test/user&amp;#34;}&amp;#39; https://&amp;lt;server&amp;gt;:445/authenticate/
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;then you can use the cookie from the file to get something:&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;curl -k -b ./authtokens -X GET &amp;#34;https://&amp;lt;server&amp;gt;:445/node/&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;</description></item></channel></rss>

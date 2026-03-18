@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Traefik on Bits Thoughts &amp; More, hugo based</title><link>https://apostoloss.github.io/BitsThoughtsAndMore/tags/traefik/</link><description>Recent content in Traefik on Bits Thoughts &amp; More, hugo based</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 03 Apr 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://apostoloss.github.io/BitsThoughtsAndMore/tags/traefik/index.xml" rel="self" type="application/rss+xml"/><item><title>letsencrypt and traefik with docker compose</title><link>https://apostoloss.github.io/BitsThoughtsAndMore/posts/docker-compose-letsencrypt-and-traefik/</link><pubDate>Wed, 03 Apr 2024 00:00:00 +0000</pubDate><guid>https://apostoloss.github.io/BitsThoughtsAndMore/posts/docker-compose-letsencrypt-and-traefik/</guid><description>
+&lt;h2 id="problem-statement"&gt;
+problem statement
+&lt;a href="#problem-statement" class="h-anchor" aria-hidden="true"&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;In a free tier oci instance I wanted to have a single point of entry with TLS and valid certs
+I also wanted to have multiple containers served using a wildcard domain.
+Also needed to be able to add new containers and immediately have them available with cert and fqdn&lt;/p&gt;
+&lt;h2 id="bom"&gt;
+BOM
+&lt;a href="#bom" class="h-anchor" aria-hidden="true"&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;traefik&lt;/li&gt;
+&lt;li&gt;duckdns&lt;/li&gt;
+&lt;li&gt;letsencrypt&lt;/li&gt;
+&lt;li&gt;docker compose&lt;/li&gt;
+&lt;li&gt;env-file for docker compose&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="docker-compose"&gt;
+docker compose
+&lt;a href="#docker-compose" class="h-anchor" aria-hidden="true"&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;This is the choice for deploying services.&lt;/p&gt;</description></item></channel></rss>

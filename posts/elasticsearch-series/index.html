@@ -1,0 +1,182 @@
+<!doctype html><html lang=en><head><title>elasticsearch notes from a slack app ::
+Bits Thoughts & More, hugo based — ...lost bits..</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content=" creating a small app with ES as backend # This is a series about a slack related app where we use ES as the backend for every event we would possibly like to store for analysis.
+There are few things we need to consider and the first is related to the fields provided by the slack api that are related to dates and timestamps.
+Most of them are ending with ts. By storing all events in ES we can then go and identify them.
+"><meta name=keywords content><meta name=robots content="noodp"><link rel=canonical href=https://apostoloss.github.io/BitsThoughtsAndMore/posts/elasticsearch-series/><link rel=stylesheet href=/BitsThoughtsAndMore/css/style.css><link rel=stylesheet href=https://apostoloss.github.io/BitsThoughtsAndMore/style.css><link rel=apple-touch-icon-precomposed sizes=144x144 href=https://apostoloss.github.io/BitsThoughtsAndMore/img/apple-touch-icon-144-precomposed.png><link rel="shortcut icon" href=https://apostoloss.github.io/BitsThoughtsAndMore/img/favicon.png><link href=/BitsThoughtsAndMore/fonts/Inter-Italic.woff2 rel=preload type=font/woff2 as=font crossorigin><link href=/BitsThoughtsAndMore/fonts/Inter-Regular.woff2 rel=preload type=font/woff2 as=font crossorigin><link href=/BitsThoughtsAndMore/fonts/Inter-Medium.woff2 rel=preload type=font/woff2 as=font crossorigin><link href=/BitsThoughtsAndMore/fonts/Inter-MediumItalic.woff2 rel=preload type=font/woff2 as=font crossorigin><link href=/BitsThoughtsAndMore/fonts/Inter-Bold.woff2 rel=preload type=font/woff2 as=font crossorigin><link href=/BitsThoughtsAndMore/fonts/Inter-BoldItalic.woff2 rel=preload type=font/woff2 as=font crossorigin><meta name=twitter:card content="summary"><meta name=twitter:title content="elasticsearch notes from a slack app"><meta name=twitter:description content="creating a small app with ES as backend # This is a series about a slack related app where we use ES as the backend for every event we would possibly like to store for analysis.
+There are few things we need to consider and the first is related to the fields provided by the slack api that are related to dates and timestamps.
+Most of them are ending with ts. By storing all events in ES we can then go and identify them."><meta property="og:url" content="https://apostoloss.github.io/BitsThoughtsAndMore/posts/elasticsearch-series/"><meta property="og:site_name" content="Bits Thoughts & More, hugo based"><meta property="og:title" content="elasticsearch notes from a slack app"><meta property="og:description" content="creating a small app with ES as backend # This is a series about a slack related app where we use ES as the backend for every event we would possibly like to store for analysis.
+There are few things we need to consider and the first is related to the fields provided by the slack api that are related to dates and timestamps.
+Most of them are ending with ts. By storing all events in ES we can then go and identify them."><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2021-12-29T00:00:00+00:00"><meta property="article:modified_time" content="2021-12-29T00:00:00+00:00"><meta property="article:tag" content="Elastic"><meta property="article:tag" content="Old Notes"></head><body class=dark-theme><div class=container><header class=header><span class=header__inner><a href=/BitsThoughtsAndMore/posts class=logo style=text-decoration:none><span class=logo__mark><svg class="greater-icon" viewBox="0 0 44 44"><path fill="none" d="M15 8l14.729 14.382L15 35.367"/></svg>
+</span><span class=logo__text>:{}: &lt;</span>
+<span class=logo__cursor></span>
+</a><span class=header__right><nav class=menu><ul class="menu__inner menu__inner--desktop"><li><a href=/BitsThoughtsAndMore/about>About</a></li><li><a href=/BitsThoughtsAndMore/posts>posts</a></li><ul class=menu__sub-inner><li class=menu__sub-inner-more-trigger>Show more
+<span class=menu__sub-inner-more-trigger-icon><svg class="greater-icon" viewBox="0 0 44 44"><path fill="none" d="M15 8l14.729 14.382L15 35.367"/></svg></span></li><ul class="menu__sub-inner-more hidden"><li><a href=/BitsThoughtsAndMore/stories>stories</a></li></ul></ul></ul><ul class="menu__inner menu__inner--mobile"><li><a href=/BitsThoughtsAndMore/about>About</a></li><li><a href=/BitsThoughtsAndMore/posts>posts</a></li><li><a href=/BitsThoughtsAndMore/stories>stories</a></li></ul></nav><span class=menu-trigger><svg viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+</span><span class=theme-toggle><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none"><path d="M22 41c10.4934.0 19-8.5066 19-19C41 11.5066 32.4934 3 22 3 11.5066 3 3 11.5066 3 22s8.5066 19 19 19zM7 22C7 13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22z"/></svg></span></span></span></header><div class=content><article class=post><h1 class=post-title>elasticsearch notes from a slack app</h1><div class=post-meta><time class=post-date>2021-12-29</time></div><span class=post-tags><a href=https://apostoloss.github.io/BitsThoughtsAndMore/tags/elastic/>#elastic</a>&nbsp;
+<a href=https://apostoloss.github.io/BitsThoughtsAndMore/tags/old-notes/>#old notes</a>&nbsp;</span><div class=post-content><h2 id=creating-a-small-app-with-es-as-backend>creating a small app with ES as backend
+<a href=#creating-a-small-app-with-es-as-backend class=h-anchor aria-hidden=true>#</a></h2><p>This is a series about a slack related app where we use ES as the backend for every event we would possibly like to store for analysis.</p><p>There are few things we need to consider and the first is related to the fields provided by the slack api that are related to dates and timestamps.</p><p>Most of them are ending with <code>ts</code>.
+By storing all events in ES we can then go and identify them.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span>date_fields<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>ts
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>event_ts
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>thread_ts
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>deleted_ts
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>timestamp
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>files.timestamp
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>files.created
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>root.ts
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>root.thread_ts
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>root.files.timestamp
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>attachments.ts
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>attachments.message_blocks.ts
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>previous_message.ts
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>previous_message.thread_ts
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>previous_message.root.ts
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>previous_message.root.thread_ts
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>previous_message.edited.ts
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>previous_message.attachments.ts
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>message.ts
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>message.thread_ts
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>message.root.thread_ts
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>message.root.ts
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>message.edited.ts
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>message.attachments.message_blocks.ts
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>message.attachments.ts
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>message.files.timestamp
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>message.files.created
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>message.latest_reply
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>&#34;&#34;&#34;</span>
+</span></span></code></pre></div><p>ES defaults to those will be type <code>text</code> which is not really useful.
+By looking at the <a href=https://www.elastic.co/guide/en/elasticsearch/reference/current/date.html#date-epoch-seconds title="date epoch">elastic date link</a></p><h2 id=mappings>mappings
+<a href=#mappings class=h-anchor aria-hidden=true>#</a></h2><p>The following will help construct mapping for the date fields:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span>mappings <span style=color:#f92672>=</span> {<span style=color:#e6db74>&#34;properties&#34;</span>:{}}
+</span></span><span style=display:flex><span>date_field <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>      <span style=color:#e6db74>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;date&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#e6db74>&#34;format&#34;</span>: <span style=color:#e6db74>&#34;strict_date_optional_time||epoch_second||epoch_millis&#34;</span>
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> k <span style=color:#f92672>in</span> date_fields<span style=color:#f92672>.</span>split():
+</span></span><span style=display:flex><span>    mappings[<span style=color:#e6db74>&#39;properties&#39;</span>][k]<span style=color:#f92672>=</span>date_field
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>print(json<span style=color:#f92672>.</span>dumps(mappings, indent<span style=color:#f92672>=</span><span style=color:#ae81ff>2</span>))
+</span></span></code></pre></div><p>so it is</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;properties&#34;</span>: {
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;ts&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;date&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;format&#34;</span>: <span style=color:#e6db74>&#34;strict_date_optional_time||epoch_second||epoch_millis&#34;</span>
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;event_ts&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;date&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;format&#34;</span>: <span style=color:#e6db74>&#34;strict_date_optional_time||epoch_second||epoch_millis&#34;</span>
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;thread_ts&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;date&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;format&#34;</span>: <span style=color:#e6db74>&#34;strict_date_optional_time||epoch_second||epoch_millis&#34;</span>
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;deleted_ts&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;date&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;format&#34;</span>: <span style=color:#e6db74>&#34;strict_date_optional_time||epoch_second||epoch_millis&#34;</span>
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;timestamp&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;date&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;format&#34;</span>: <span style=color:#e6db74>&#34;strict_date_optional_time||epoch_second||epoch_millis&#34;</span>
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;files.timestamp&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;date&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;format&#34;</span>: <span style=color:#e6db74>&#34;strict_date_optional_time||epoch_second||epoch_millis&#34;</span>
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;files.created&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;date&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;format&#34;</span>: <span style=color:#e6db74>&#34;strict_date_optional_time||epoch_second||epoch_millis&#34;</span>
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;root.ts&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;date&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;format&#34;</span>: <span style=color:#e6db74>&#34;strict_date_optional_time||epoch_second||epoch_millis&#34;</span>
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;root.thread_ts&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;date&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;format&#34;</span>: <span style=color:#e6db74>&#34;strict_date_optional_time||epoch_second||epoch_millis&#34;</span>
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;root.files.timestamp&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;date&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;format&#34;</span>: <span style=color:#e6db74>&#34;strict_date_optional_time||epoch_second||epoch_millis&#34;</span>
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;attachments.ts&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;date&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;format&#34;</span>: <span style=color:#e6db74>&#34;strict_date_optional_time||epoch_second||epoch_millis&#34;</span>
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;attachments.message_blocks.ts&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;date&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;format&#34;</span>: <span style=color:#e6db74>&#34;strict_date_optional_time||epoch_second||epoch_millis&#34;</span>
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;previous_message.ts&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;date&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;format&#34;</span>: <span style=color:#e6db74>&#34;strict_date_optional_time||epoch_second||epoch_millis&#34;</span>
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;previous_message.thread_ts&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;date&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;format&#34;</span>: <span style=color:#e6db74>&#34;strict_date_optional_time||epoch_second||epoch_millis&#34;</span>
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;previous_message.root.ts&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;date&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;format&#34;</span>: <span style=color:#e6db74>&#34;strict_date_optional_time||epoch_second||epoch_millis&#34;</span>
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;previous_message.root.thread_ts&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;date&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;format&#34;</span>: <span style=color:#e6db74>&#34;strict_date_optional_time||epoch_second||epoch_millis&#34;</span>
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;previous_message.edited.ts&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;date&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;format&#34;</span>: <span style=color:#e6db74>&#34;strict_date_optional_time||epoch_second||epoch_millis&#34;</span>
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;previous_message.attachments.ts&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;date&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;format&#34;</span>: <span style=color:#e6db74>&#34;strict_date_optional_time||epoch_second||epoch_millis&#34;</span>
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;message.ts&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;date&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;format&#34;</span>: <span style=color:#e6db74>&#34;strict_date_optional_time||epoch_second||epoch_millis&#34;</span>
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;message.thread_ts&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;date&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;format&#34;</span>: <span style=color:#e6db74>&#34;strict_date_optional_time||epoch_second||epoch_millis&#34;</span>
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;message.root.thread_ts&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;date&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;format&#34;</span>: <span style=color:#e6db74>&#34;strict_date_optional_time||epoch_second||epoch_millis&#34;</span>
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;message.root.ts&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;date&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;format&#34;</span>: <span style=color:#e6db74>&#34;strict_date_optional_time||epoch_second||epoch_millis&#34;</span>
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;message.edited.ts&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;date&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;format&#34;</span>: <span style=color:#e6db74>&#34;strict_date_optional_time||epoch_second||epoch_millis&#34;</span>
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;message.attachments.message_blocks.ts&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;date&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;format&#34;</span>: <span style=color:#e6db74>&#34;strict_date_optional_time||epoch_second||epoch_millis&#34;</span>
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;message.attachments.ts&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;date&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;format&#34;</span>: <span style=color:#e6db74>&#34;strict_date_optional_time||epoch_second||epoch_millis&#34;</span>
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;message.files.timestamp&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;date&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;format&#34;</span>: <span style=color:#e6db74>&#34;strict_date_optional_time||epoch_second||epoch_millis&#34;</span>
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h2 id=reindexing>reindexing
+<a href=#reindexing class=h-anchor aria-hidden=true>#</a></h2><p>Whenever we do a mapping change we should reindex data from the source index to the one we changed the mapping in order for the data to be parsed according to the type of the filed we changed (in the destination index)</p><pre tabindex=0><code>POST _reindex 
+    {
+      &#34;source&#34;: {
+        &#34;index&#34;: &#34;slack-messages&#34;
+      },
+      &#34;dest&#34;: {
+        &#34;index&#34;: &#34;slack-messages_reindexed&#34;
+      }}
+</code></pre><h2 id=aliasing>aliasing
+<a href=#aliasing class=h-anchor aria-hidden=true>#</a></h2><p>It is expected to have mapping changes as you enhance or develop an app thus it is often recommended to get an alias in place to use when sending data. That will also provide the ability to perform changes without having to affect application and to minimise downtime</p><p>Have a look at <a href=https://www.elastic.co/blog/changing-mapping-with-zero-downtime>mapping with 0 downtime</a> to get an idea</p><h1 id=kibana>kibana
+<a href=#kibana class=h-anchor aria-hidden=true>#</a></h1><p>So we have our data in es and we want to search them. Most of what we might want to do is already available.. For kibana to show the date histogram of our documents the <code>timestamp</code> field (here we marked <code>ts</code> field of slack messages for that) to be the one used for this purpose.</p><h2 id=formating>formating
+<a href=#formating class=h-anchor aria-hidden=true>#</a></h2><p>Some slack messages or events contain urls in order to make them clickable in kibana you need to change the format of those fields so that are presented as links. Navigate to <code>stack management</code> (under kibana)<code>index management</code> <code>&lt;your index patterm></code> and find your field to do an edit. While in the &ldquo;edit&rdquo; of that field, enable <code>set format</code> and switch to <code>Url</code>.</p></div></article></div><footer class=footer><div class=footer__inner><a href=/BitsThoughtsAndMore/posts class=logo style=text-decoration:none><span class=logo__mark><svg class="greater-icon" viewBox="0 0 44 44"><path fill="none" d="M15 8l14.729 14.382L15 35.367"/></svg>
+</span><span class=logo__text>:{}: &lt;</span>
+<span class=logo__cursor></span></a><div class=copyright><span>© 2026 Powered by <a href=https://gohugo.io target=_blank rel=noopener>Hugo</a></span>
+<span><a href=https://github.com/panr/hugo-theme-hello-friend target=_blank>Original Theme</a> made by
+<a href=https://github.com/panr target=_blank>panr</a></span></div></div></footer><script type=text/javascript src=/BitsThoughtsAndMore/bundle.min.js></script></div></body></html>
